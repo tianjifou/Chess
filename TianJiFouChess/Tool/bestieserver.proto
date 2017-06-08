@@ -1,0 +1,135 @@
+syntax = "proto2";
+package vline;
+enum BESTIE_SERVER_MESSAGE_ID
+{
+    HELLO_REQ                  = 1;
+    HELLO_ACK                  = 2;
+    SYSTEM_MESSAGE_REQ         = 3;
+    SYSTEM_MESSAGE_ACK         = 4;
+    GROUP_GET_ONLINE_USERS_REQ = 5;
+    GROUP_GET_ONLINE_USERS_ACK = 6;
+    EVENT_NOTIFICATION_REQ     = 7;
+    EVENT_NOTIFICATION_ACK     = 8;
+    GET_OFFLINE_USER_LIST_REQ  = 11;
+    GET_OFFLINE_USER_LIST_ACK  = 12;
+    GET_USER_ONLINE_STATUS_REQ = 13;
+    GET_USER_ONLINE_STATUS_ACK = 14;
+    GET_GROUP_USER_LIST_REQ = 10000;
+    GET_GROUP_USER_LIST_ACK = 10001;
+}
+
+//客户端告知服务器自己是谁
+message HELLO_REQ_PKG
+{
+    required uint32 user_id = 1; //用户Id
+    required string version = 2; //客户端版本
+}
+
+message HELLO_ACK_PKG
+{
+    required sint32 error_code = 1; //错误码: 0成功, -1系统错误
+    optional uint32 unread_message_num = 2; // 未读消息数量
+}
+
+//要推送的系统消息
+message SYSTEM_MESSAGE_REQ_PKG
+{
+    required uint32 id = 1; //消息Id
+    required uint32 source = 2; //消息源
+    required uint32 target = 3; //接收者
+    required string data = 4; //消息内容
+}
+
+message SYSTEM_MESSAGE_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+}
+
+/*
+//聊天消息
+message CHAT_MESSAGE_REQ_PKG
+{
+    required uint32 event = 1; //事件Id, 区分群聊/私聊等子消息类型
+    required uint32 source = 2; //发送者
+    required uint32 target = 3; //接收者
+    required string data = 4; //数据
+}
+
+message CHAT_MESSAGE_ACK_PKG
+{
+    required sint32 error_code = 1; //错误码: 0成功, -1系统错误
+}
+*/
+
+// PHP -> server: 获取聊天室在线用户列表
+message GROUP_GET_ONLINE_USERS_REQ_PKG
+{
+    required uint32 group_id = 1; // 聊天室Id
+}
+// server -> PHP: 返回聊天室在线用户列表
+message GROUP_GET_ONLINE_USERS_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+    repeated uint32 user_id    = 2; // 在线用户Id
+}
+
+// PHP -> server, server -> App: 事件通知,发给指定房间(group_id)的指定用户(target)
+message EVENT_NOTIFICATION_REQ_PKG
+{
+    required uint32 event_id = 1; // 事件Id
+    required uint32 group_id = 2; // 房间Id
+    optional uint32 source   = 3; // 事件源
+    optional uint32 target   = 4; // 通知对象
+    optional string data     = 5; // 关联数据
+}
+// server -> PHP, App -> server: 前一消息的处理结果, 暂时不用
+message EVENT_NOTIFICATION_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+}
+
+//查询房间离线用户及其未读消息数量
+message GET_OFFLINE_USER_LIST_REQ_PKG
+{
+    required uint32 group_id = 1; // 房间Id
+}
+
+//用户Id及其未读消息数量
+message USER_INFO
+{
+    required uint32 user_id = 1;            //用户Id
+    required uint32 unread_message_num = 2; //未读消息数量
+}
+
+//查询房间离线用户及其未读消息数量响应
+message GET_OFFLINE_USER_LIST_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+    repeated USER_INFO user_info = 2;
+}
+
+//查询用户在线状态
+message GET_USER_ONLINE_STATUS_REQ_PKG
+{
+    required uint32 user_id = 1; //用户Id
+}
+
+//查询用户在线状态响应
+message GET_USER_ONLINE_STATUS_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+    required bool is_online = 2; // 在线状态: true在线, false离线
+    required uint32 unread_message_num = 3; // 未读消息数
+}
+
+//TODO: write a descriptive comment
+message GET_GROUP_USER_LIST_REQ_PKG
+{
+    required uint32 group_id = 1; // 房间Id
+}
+
+message GET_GROUP_USER_LIST_ACK_PKG
+{
+    required sint32 error_code = 1; // 错误码: 0成功, -1系统错误
+    repeated uint32 user_id = 2; // 用户Id
+}

@@ -1,0 +1,38 @@
+PODS:
+  - HexColors (2.3.0)
+  - Hyphenate (3.3.1)
+  - IQKeyboardManager (4.0.9)
+  - Masonry (1.0.1)
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.12)
+  - Protobuf (3.3.0)
+  - ProtocolBuffers-Swift (3.0.16)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+
+DEPENDENCIES:
+  - HexColors (= 2.3.0)
+  - Hyphenate
+  - IQKeyboardManager
+  - Masonry (= 1.0.1)
+  - MBProgressHUD (= 0.9.2)
+  - MJRefresh
+  - Protobuf
+  - ProtocolBuffers-Swift
+  - SDWebImage (= 3.7.5)
+
+SPEC CHECKSUMS:
+  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
+  Hyphenate: 48dd9475340ada20c03a644afc9cb2f13df8f697
+  IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  ProtocolBuffers-Swift: cba3f101c408355bb2a426c8d14c63cf2de3f567
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+
+PODFILE CHECKSUM: 44b2d6d25554571843f453856aa618299c4fbdac
+
+COCOAPODS: 1.2.1

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+
+enum tianJiFouMessageId
+{
+kChallenge         = 0;
+kPutInstantMessage = 1;
+kGetInstantMessage = 2;
+}
+
+// 即时消息
+message InstantMessage {
+ uint32 id = 1; // 消息Id
+ string from = 2;//消息来源
+ string realname = 3;//昵称
+ string avatar = 4;//图像
+  uint32 type = 5; // 消息类型 0：文字消息；1：图片消息；2：音频消息
+  string content = 6; // 消息内容
+ uint32 create_time = 7; // 创建时间
+ string to = 8; // 接收消息者
+ bool is_group_chat = 9; // 群聊标志: true=>to为群Id; false=>to为用户Id
+}
+
+// 发送即时消息
+message PutInstantMessage {
+  string from = 1; // 发送者
+  string to = 2;   // 接收者
+  InstantMessage message = 3; // 即时消息(1条)
+ bool is_group_chat = 4; // 群聊标志: true=>to为群Id; false=>to为用户Id
+}
+// 获取即时消息
+message GetInstantMessage {
+ string from = 1; // 发送者
+ string to = 2;   // 接收者
+ InstantMessage message = 3; // 即时消息(1条)
+ bool is_group_chat = 4; // 群聊标志: true=>to为群Id; false=>to为用户Id
+}
+message PointMessage {
+
+  float xx = 1;//横坐标
+  float yy = 2;//纵坐标
+
+}
+// 发送棋子步骤
+message ChallengeMessage {
+uint32 type_role = 1;//消息类型状态 1:我是白棋 2:我是黑棋 3:对方已退出游戏 4:对方请求悔棋 5:接受对方悔棋 6:拒绝对方悔棋 7:对方请求重来一局 8:接受对方重新来 9: 拒绝对方重新来 10:对方认输
+  string from = 2; // 发送者
+  string to = 3;   // 接收者
+  PointMessage  point = 4;//位置
+}

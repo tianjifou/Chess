@@ -1,0 +1,823 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BA9267754373AFD54ADB04A /* Pods_TianJiFouChess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EC41E59F761405A5B5779C /* Pods_TianJiFouChess.framework */; };
+		AD096B741ED95CC50081B3CA /* Timer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD096B731ED95CC50081B3CA /* Timer+Extension.swift */; };
+		AD51BED71EBC30230086FD7A /* ChessboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51BED41EBC30230086FD7A /* ChessboardView.swift */; };
+		AD51BED91EBC30230086FD7A /* ChessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51BED61EBC30230086FD7A /* ChessViewController.swift */; };
+		AD51BEDC1EBC304F0086FD7A /* ChessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51BEDB1EBC304F0086FD7A /* ChessModel.swift */; };
+		AD66FE351ED424D400E30706 /* ShunZiChess.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD685B491ECBE3FE00EA006D /* BluetoothTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */; };
+		AD685B4A1ECBE3FE00EA006D /* ChessStepTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */; };
+		AD685B4B1ECBE3FE00EA006D /* TJFTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B481ECBE3FE00EA006D /* TJFTool.swift */; };
+		AD685B4D1ECBE41A00EA006D /* ChatHelpTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */; };
+		AD685B4F1ECC27D000EA006D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B4E1ECC27D000EA006D /* MainTabBarViewController.swift */; };
+		AD685B511ECC2A5700EA006D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD685B501ECC2A5700EA006D /* Login.storyboard */; };
+		AD685B541ECC2AE700EA006D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD685B521ECC2AE700EA006D /* Main.storyboard */; };
+		AD685B561ECC399D00EA006D /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B551ECC399D00EA006D /* FriendViewController.swift */; };
+		AD685B581ECC3B7900EA006D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B571ECC3B7900EA006D /* UserModel.swift */; };
+		AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */; };
+		AD685B631ECD49B600EA006D /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */; };
+		AD685B641ECD49B600EA006D /* AddFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */; };
+		AD9DED501EE536D50048218E /* ChessEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DED4F1EE536D50048218E /* ChessEnum.swift */; };
+		ADA27B201EC97A6000AEA3C1 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */; };
+		ADA27B221EC9896200AEA3C1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */; };
+		ADA27B271EC98B1300AEA3C1 /* UIViewController+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */; };
+		ADA27B291EC98CF200AEA3C1 /* PALoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */; };
+		ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */; };
+		ADA27B2D1EC98EB200AEA3C1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B2C1EC98EB200AEA3C1 /* UILabel+Extension.swift */; };
+		ADA27B311EC9919500AEA3C1 /* TJFString.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B301EC9919500AEA3C1 /* TJFString.swift */; };
+		ADD745831ECEC851005B2BB6 /* NSDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD745821ECEC851005B2BB6 /* NSDataTool.m */; };
+		ADD745891ECEF346005B2BB6 /* shunZiChess.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADD745881ECEF346005B2BB6 /* shunZiChess.proto */; };
+		ADDE35E41EB32C9E009964F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE35E31EB32C9E009964F6 /* AppDelegate.swift */; };
+		ADDE35E61EB32C9E009964F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE35E51EB32C9E009964F6 /* ViewController.swift */; };
+		ADDE35EB1EB32C9E009964F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADDE35EA1EB32C9E009964F6 /* Assets.xcassets */; };
+		ADDE35EE1EB32C9E009964F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADDE35EC1EB32C9E009964F6 /* LaunchScreen.storyboard */; };
+		ADDE35F91EB32C9E009964F6 /* TianJiFouChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE35F81EB32C9E009964F6 /* TianJiFouChessTests.swift */; };
+		ADDE36041EB32C9E009964F6 /* TianJiFouChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADDE35F51EB32C9E009964F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADDE35D81EB32C9E009964F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADDE35DF1EB32C9E009964F6;
+			remoteInfo = TianJiFouChess;
+		};
+		ADDE36001EB32C9E009964F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADDE35D81EB32C9E009964F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADDE35DF1EB32C9E009964F6;
+			remoteInfo = TianJiFouChess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		36DB8D90A01942081370D750 /* Pods-TianJiFouChess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TianJiFouChess.release.xcconfig"; path = "Pods/Target Support Files/Pods-TianJiFouChess/Pods-TianJiFouChess.release.xcconfig"; sourceTree = "<group>"; };
+		867ED4FAEC8478E22E1285E6 /* Pods-TianJiFouChess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TianJiFouChess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TianJiFouChess/Pods-TianJiFouChess.debug.xcconfig"; sourceTree = "<group>"; };
+		98EC41E59F761405A5B5779C /* Pods_TianJiFouChess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TianJiFouChess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD096B731ED95CC50081B3CA /* Timer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+Extension.swift"; sourceTree = "<group>"; };
+		AD51BED41EBC30230086FD7A /* ChessboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessboardView.swift; sourceTree = "<group>"; };
+		AD51BED61EBC30230086FD7A /* ChessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessViewController.swift; sourceTree = "<group>"; };
+		AD51BEDB1EBC304F0086FD7A /* ChessModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessModel.swift; sourceTree = "<group>"; };
+		AD66FE331ED424D400E30706 /* ShunZiChess.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShunZiChess.pbobjc.h; sourceTree = "<group>"; };
+		AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShunZiChess.pbobjc.m; sourceTree = "<group>"; };
+		AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTool.swift; sourceTree = "<group>"; };
+		AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessStepTool.swift; sourceTree = "<group>"; };
+		AD685B481ECBE3FE00EA006D /* TJFTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJFTool.swift; sourceTree = "<group>"; };
+		AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHelpTool.swift; sourceTree = "<group>"; };
+		AD685B4E1ECC27D000EA006D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		AD685B501ECC2A5700EA006D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		AD685B531ECC2AE700EA006D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD685B551ECC399D00EA006D /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		AD685B571ECC3B7900EA006D /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
+		AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
+		AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendTableViewCell.xib; sourceTree = "<group>"; };
+		AD9DED4F1EE536D50048218E /* ChessEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEnum.swift; sourceTree = "<group>"; };
+		ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
+		ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		ADA27B241EC98B1200AEA3C1 /* TianJiFouChess-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TianJiFouChess-Bridging-Header.h"; sourceTree = "<group>"; };
+		ADA27B251EC98B1300AEA3C1 /* UIViewController+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowMessage.h"; sourceTree = "<group>"; };
+		ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowMessage.m"; sourceTree = "<group>"; };
+		ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PALoadingView.swift; sourceTree = "<group>"; };
+		ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PADeviceSize.swift; sourceTree = "<group>"; };
+		ADA27B2C1EC98EB200AEA3C1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		ADA27B301EC9919500AEA3C1 /* TJFString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJFString.swift; sourceTree = "<group>"; };
+		ADD745811ECEC851005B2BB6 /* NSDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataTool.h; sourceTree = "<group>"; };
+		ADD745821ECEC851005B2BB6 /* NSDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataTool.m; sourceTree = "<group>"; };
+		ADD745881ECEF346005B2BB6 /* shunZiChess.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shunZiChess.proto; sourceTree = "<group>"; };
+		ADDE35E01EB32C9E009964F6 /* TianJiFouChess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TianJiFouChess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDE35E31EB32C9E009964F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ADDE35E51EB32C9E009964F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ADDE35EA1EB32C9E009964F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADDE35ED1EB32C9E009964F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ADDE35EF1EB32C9E009964F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADDE35F41EB32C9E009964F6 /* TianJiFouChessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TianJiFouChessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDE35F81EB32C9E009964F6 /* TianJiFouChessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianJiFouChessTests.swift; sourceTree = "<group>"; };
+		ADDE35FA1EB32C9E009964F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADDE35FF1EB32C9E009964F6 /* TianJiFouChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TianJiFouChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianJiFouChessUITests.swift; sourceTree = "<group>"; };
+		ADDE36051EB32C9E009964F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ADDE35DD1EB32C9E009964F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BA9267754373AFD54ADB04A /* Pods_TianJiFouChess.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35F11EB32C9E009964F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35FC1EB32C9E009964F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6ECB495E72E409D4ED612C17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				867ED4FAEC8478E22E1285E6 /* Pods-TianJiFouChess.debug.xcconfig */,
+				36DB8D90A01942081370D750 /* Pods-TianJiFouChess.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD51BEDA1EBC304F0086FD7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD51BEDB1EBC304F0086FD7A /* ChessModel.swift */,
+				AD685B571ECC3B7900EA006D /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD685B451ECBE3FE00EA006D /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				ADD745881ECEF346005B2BB6 /* shunZiChess.proto */,
+				AD66FE331ED424D400E30706 /* ShunZiChess.pbobjc.h */,
+				AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */,
+				AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */,
+				AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */,
+				AD685B481ECBE3FE00EA006D /* TJFTool.swift */,
+				AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */,
+				AD9DED4F1EE536D50048218E /* ChessEnum.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		ADA27B231EC989A800AEA3C1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				ADA27B251EC98B1300AEA3C1 /* UIViewController+ShowMessage.h */,
+				ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */,
+				ADA27B241EC98B1200AEA3C1 /* TianJiFouChess-Bridging-Header.h */,
+				ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */,
+				ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */,
+				ADA27B2C1EC98EB200AEA3C1 /* UILabel+Extension.swift */,
+				AD096B731ED95CC50081B3CA /* Timer+Extension.swift */,
+				ADA27B301EC9919500AEA3C1 /* TJFString.swift */,
+				ADD745811ECEC851005B2BB6 /* NSDataTool.h */,
+				ADD745821ECEC851005B2BB6 /* NSDataTool.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		ADDE35D71EB32C9E009964F6 = {
+			isa = PBXGroup;
+			children = (
+				ADDE35E21EB32C9E009964F6 /* TianJiFouChess */,
+				ADDE35F71EB32C9E009964F6 /* TianJiFouChessTests */,
+				ADDE36021EB32C9E009964F6 /* TianJiFouChessUITests */,
+				ADDE35E11EB32C9E009964F6 /* Products */,
+				6ECB495E72E409D4ED612C17 /* Pods */,
+				B9CE8CCDAA6CE054D5E56BDD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ADDE35E11EB32C9E009964F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE35E01EB32C9E009964F6 /* TianJiFouChess.app */,
+				ADDE35F41EB32C9E009964F6 /* TianJiFouChessTests.xctest */,
+				ADDE35FF1EB32C9E009964F6 /* TianJiFouChessUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ADDE35E21EB32C9E009964F6 /* TianJiFouChess */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE35E31EB32C9E009964F6 /* AppDelegate.swift */,
+				ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */,
+				ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */,
+				AD685B4E1ECC27D000EA006D /* MainTabBarViewController.swift */,
+				ADDE35E51EB32C9E009964F6 /* ViewController.swift */,
+				AD51BED61EBC30230086FD7A /* ChessViewController.swift */,
+				AD685B551ECC399D00EA006D /* FriendViewController.swift */,
+				AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */,
+				AD51BED41EBC30230086FD7A /* ChessboardView.swift */,
+				AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */,
+				AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */,
+				ADA27B231EC989A800AEA3C1 /* Util */,
+				AD51BEDA1EBC304F0086FD7A /* Model */,
+				AD685B451ECBE3FE00EA006D /* Tool */,
+				AD685B521ECC2AE700EA006D /* Main.storyboard */,
+				AD685B501ECC2A5700EA006D /* Login.storyboard */,
+				ADDE35EA1EB32C9E009964F6 /* Assets.xcassets */,
+				ADDE35EC1EB32C9E009964F6 /* LaunchScreen.storyboard */,
+				ADDE35EF1EB32C9E009964F6 /* Info.plist */,
+			);
+			path = TianJiFouChess;
+			sourceTree = "<group>";
+		};
+		ADDE35F71EB32C9E009964F6 /* TianJiFouChessTests */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE35F81EB32C9E009964F6 /* TianJiFouChessTests.swift */,
+				ADDE35FA1EB32C9E009964F6 /* Info.plist */,
+			);
+			path = TianJiFouChessTests;
+			sourceTree = "<group>";
+		};
+		ADDE36021EB32C9E009964F6 /* TianJiFouChessUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */,
+				ADDE36051EB32C9E009964F6 /* Info.plist */,
+			);
+			path = TianJiFouChessUITests;
+			sourceTree = "<group>";
+		};
+		B9CE8CCDAA6CE054D5E56BDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98EC41E59F761405A5B5779C /* Pods_TianJiFouChess.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ADDE35DF1EB32C9E009964F6 /* TianJiFouChess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADDE36081EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChess" */;
+			buildPhases = (
+				CE9C4039513900A2C3491A8B /* [CP] Check Pods Manifest.lock */,
+				ADDE35DC1EB32C9E009964F6 /* Sources */,
+				ADDE35DD1EB32C9E009964F6 /* Frameworks */,
+				ADDE35DE1EB32C9E009964F6 /* Resources */,
+				57E4AAAC495FE8EE51E63D50 /* [CP] Embed Pods Frameworks */,
+				A150638582C69EBFC2DBBADE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TianJiFouChess;
+			productName = TianJiFouChess;
+			productReference = ADDE35E01EB32C9E009964F6 /* TianJiFouChess.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ADDE35F31EB32C9E009964F6 /* TianJiFouChessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADDE360B1EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChessTests" */;
+			buildPhases = (
+				ADDE35F01EB32C9E009964F6 /* Sources */,
+				ADDE35F11EB32C9E009964F6 /* Frameworks */,
+				ADDE35F21EB32C9E009964F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADDE35F61EB32C9E009964F6 /* PBXTargetDependency */,
+			);
+			name = TianJiFouChessTests;
+			productName = TianJiFouChessTests;
+			productReference = ADDE35F41EB32C9E009964F6 /* TianJiFouChessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ADDE35FE1EB32C9E009964F6 /* TianJiFouChessUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADDE360E1EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChessUITests" */;
+			buildPhases = (
+				ADDE35FB1EB32C9E009964F6 /* Sources */,
+				ADDE35FC1EB32C9E009964F6 /* Frameworks */,
+				ADDE35FD1EB32C9E009964F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADDE36011EB32C9E009964F6 /* PBXTargetDependency */,
+			);
+			name = TianJiFouChessUITests;
+			productName = TianJiFouChessUITests;
+			productReference = ADDE35FF1EB32C9E009964F6 /* TianJiFouChessUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ADDE35D81EB32C9E009964F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = tianjifou;
+				TargetAttributes = {
+					ADDE35DF1EB32C9E009964F6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6GA5676ZM3;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Manual;
+					};
+					ADDE35F31EB32C9E009964F6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2Z9X5ENNPW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ADDE35DF1EB32C9E009964F6;
+					};
+					ADDE35FE1EB32C9E009964F6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 2Z9X5ENNPW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ADDE35DF1EB32C9E009964F6;
+					};
+				};
+			};
+			buildConfigurationList = ADDE35DB1EB32C9E009964F6 /* Build configuration list for PBXProject "TianJiFouChess" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ADDE35D71EB32C9E009964F6;
+			productRefGroup = ADDE35E11EB32C9E009964F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADDE35DF1EB32C9E009964F6 /* TianJiFouChess */,
+				ADDE35F31EB32C9E009964F6 /* TianJiFouChessTests */,
+				ADDE35FE1EB32C9E009964F6 /* TianJiFouChessUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ADDE35DE1EB32C9E009964F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD685B641ECD49B600EA006D /* AddFriendTableViewCell.xib in Resources */,
+				AD685B511ECC2A5700EA006D /* Login.storyboard in Resources */,
+				ADDE35EE1EB32C9E009964F6 /* LaunchScreen.storyboard in Resources */,
+				ADDE35EB1EB32C9E009964F6 /* Assets.xcassets in Resources */,
+				ADD745891ECEF346005B2BB6 /* shunZiChess.proto in Resources */,
+				AD685B541ECC2AE700EA006D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35F21EB32C9E009964F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35FD1EB32C9E009964F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57E4AAAC495FE8EE51E63D50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TianJiFouChess/Pods-TianJiFouChess-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A150638582C69EBFC2DBBADE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TianJiFouChess/Pods-TianJiFouChess-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE9C4039513900A2C3491A8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADDE35DC1EB32C9E009964F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD685B491ECBE3FE00EA006D /* BluetoothTool.swift in Sources */,
+				AD66FE351ED424D400E30706 /* ShunZiChess.pbobjc.m in Sources */,
+				ADDE35E61EB32C9E009964F6 /* ViewController.swift in Sources */,
+				ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */,
+				AD685B4F1ECC27D000EA006D /* MainTabBarViewController.swift in Sources */,
+				AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */,
+				AD51BED71EBC30230086FD7A /* ChessboardView.swift in Sources */,
+				AD685B4D1ECBE41A00EA006D /* ChatHelpTool.swift in Sources */,
+				AD685B561ECC399D00EA006D /* FriendViewController.swift in Sources */,
+				ADA27B201EC97A6000AEA3C1 /* LogonViewController.swift in Sources */,
+				ADA27B291EC98CF200AEA3C1 /* PALoadingView.swift in Sources */,
+				ADD745831ECEC851005B2BB6 /* NSDataTool.m in Sources */,
+				AD685B4B1ECBE3FE00EA006D /* TJFTool.swift in Sources */,
+				AD685B4A1ECBE3FE00EA006D /* ChessStepTool.swift in Sources */,
+				AD685B631ECD49B600EA006D /* AddFriendTableViewCell.swift in Sources */,
+				ADDE35E41EB32C9E009964F6 /* AppDelegate.swift in Sources */,
+				ADA27B221EC9896200AEA3C1 /* BaseViewController.swift in Sources */,
+				AD096B741ED95CC50081B3CA /* Timer+Extension.swift in Sources */,
+				AD51BEDC1EBC304F0086FD7A /* ChessModel.swift in Sources */,
+				AD51BED91EBC30230086FD7A /* ChessViewController.swift in Sources */,
+				AD9DED501EE536D50048218E /* ChessEnum.swift in Sources */,
+				AD685B581ECC3B7900EA006D /* UserModel.swift in Sources */,
+				ADA27B2D1EC98EB200AEA3C1 /* UILabel+Extension.swift in Sources */,
+				ADA27B311EC9919500AEA3C1 /* TJFString.swift in Sources */,
+				ADA27B271EC98B1300AEA3C1 /* UIViewController+ShowMessage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35F01EB32C9E009964F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADDE35F91EB32C9E009964F6 /* TianJiFouChessTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDE35FB1EB32C9E009964F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADDE36041EB32C9E009964F6 /* TianJiFouChessUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADDE35F61EB32C9E009964F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADDE35DF1EB32C9E009964F6 /* TianJiFouChess */;
+			targetProxy = ADDE35F51EB32C9E009964F6 /* PBXContainerItemProxy */;
+		};
+		ADDE36011EB32C9E009964F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADDE35DF1EB32C9E009964F6 /* TianJiFouChess */;
+			targetProxy = ADDE36001EB32C9E009964F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD685B521ECC2AE700EA006D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD685B531ECC2AE700EA006D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ADDE35EC1EB32C9E009964F6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADDE35ED1EB32C9E009964F6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ADDE36061EB32C9E009964F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADDE36071EB32C9E009964F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ADDE36091EB32C9E009964F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867ED4FAEC8478E22E1285E6 /* Pods-TianJiFouChess.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6GA5676ZM3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Hyphenate\"",
+					/usr/include/libxml2,
+				);
+				INFOPLIST_FILE = TianJiFouChess/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"HexColors\"",
+					"-framework",
+					"\"Hyphenate\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChess;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ca85e8b0-23fc-49e1-871d-26a93909eea0";
+				PROVISIONING_PROFILE_SPECIFIER = wanjiaWildcard;
+				SWIFT_OBJC_BRIDGING_HEADER = "TianJiFouChess/Util/TianJiFouChess-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		ADDE360A1EB32C9E009964F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36DB8D90A01942081370D750 /* Pods-TianJiFouChess.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6GA5676ZM3;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Hyphenate\"",
+					/usr/include/libxml2,
+				);
+				INFOPLIST_FILE = TianJiFouChess/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"HexColors\"",
+					"-framework",
+					"\"Hyphenate\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChess;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ca85e8b0-23fc-49e1-871d-26a93909eea0";
+				PROVISIONING_PROFILE_SPECIFIER = wanjiaWildcard;
+				SWIFT_OBJC_BRIDGING_HEADER = "TianJiFouChess/Util/TianJiFouChess-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		ADDE360C1EB32C9E009964F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2Z9X5ENNPW;
+				INFOPLIST_FILE = TianJiFouChessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TianJiFouChess.app/TianJiFouChess";
+			};
+			name = Debug;
+		};
+		ADDE360D1EB32C9E009964F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2Z9X5ENNPW;
+				INFOPLIST_FILE = TianJiFouChessTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TianJiFouChess.app/TianJiFouChess";
+			};
+			name = Release;
+		};
+		ADDE360F1EB32C9E009964F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 2Z9X5ENNPW;
+				INFOPLIST_FILE = TianJiFouChessUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = TianJiFouChess;
+			};
+			name = Debug;
+		};
+		ADDE36101EB32C9E009964F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 2Z9X5ENNPW;
+				INFOPLIST_FILE = TianJiFouChessUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = TianJiFouChess;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ADDE35DB1EB32C9E009964F6 /* Build configuration list for PBXProject "TianJiFouChess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADDE36061EB32C9E009964F6 /* Debug */,
+				ADDE36071EB32C9E009964F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADDE36081EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADDE36091EB32C9E009964F6 /* Debug */,
+				ADDE360A1EB32C9E009964F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADDE360B1EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADDE360C1EB32C9E009964F6 /* Debug */,
+				ADDE360D1EB32C9E009964F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADDE360E1EB32C9E009964F6 /* Build configuration list for PBXNativeTarget "TianJiFouChessUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADDE360F1EB32C9E009964F6 /* Debug */,
+				ADDE36101EB32C9E009964F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ADDE35D81EB32C9E009964F6 /* Project object */;
+}
