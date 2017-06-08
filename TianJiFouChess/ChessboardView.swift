@@ -89,7 +89,7 @@ class ChessboardView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if isWaiting {
+        if isWaiting && viewType! != .manAnMachine{
             return
         }
         guard let location = touches.first?.location(in: self) else {
