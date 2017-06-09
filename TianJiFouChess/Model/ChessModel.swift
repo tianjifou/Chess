@@ -8,9 +8,7 @@
 
 import Foundation
 import UIKit
-class ChessModel: NSObject {
-    
-}
+
 class SWSPoint: NSObject {
     var x:Int = 0
     var y:Int = 0

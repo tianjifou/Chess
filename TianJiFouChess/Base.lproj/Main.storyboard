@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="-1428" y="-3385"/>
         </scene>
-        <!--顺子棋-->
+        <!--六洲棋-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="TianJiFouChess" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,7 +254,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="游戏" id="cnb-ci-eiH"/>
-                    <navigationItem key="navigationItem" title="顺子棋" id="htD-1m-WhW">
+                    <navigationItem key="navigationItem" title="六洲棋" id="htD-1m-WhW">
+                        <barButtonItem key="leftBarButtonItem" title="玩法介绍" id="BrM-ka-F0R">
+                            <connections>
+                                <action selector="gameExplain:" destination="BYZ-38-t0r" id="PtG-MH-NbF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="退出登录" id="7dg-4J-Fl1">
                             <connections>
                                 <action selector="logOutAction:" destination="BYZ-38-t0r" id="OjI-yl-N9g"/>
@@ -268,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3738" y="-1820"/>
+            <point key="canvasLocation" x="-3852" y="-1931"/>
         </scene>
         <!--Chess View Controller-->
         <scene sceneID="KfP-lS-zwn">
@@ -332,11 +337,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_wd1" width="54" height="54"/>
-        <image name="icon_wd2" width="54" height="54"/>
-        <image name="icon_xx1" width="54" height="54"/>
-        <image name="icon_xx2" width="54" height="54"/>
-        <image name="icon_xy1" width="54" height="54"/>
-        <image name="icon_xy2" width="54" height="54"/>
+        <image name="icon_wd1" width="27" height="27"/>
+        <image name="icon_wd2" width="27" height="27"/>
+        <image name="icon_xx1" width="27" height="27"/>
+        <image name="icon_xx2" width="27" height="27"/>
+        <image name="icon_xy1" width="27" height="27"/>
+        <image name="icon_xy2" width="27" height="27"/>
     </resources>
 </document>

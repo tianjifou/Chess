@@ -18,6 +18,11 @@ class ViewController: BaseViewController {
         
         
     }
+    @IBAction func gameExplain(_ sender: Any) {
+        let vc =  WebViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

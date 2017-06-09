@@ -17,7 +17,7 @@ class ChessViewController: BaseViewController {
     @IBOutlet weak var againBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.title = "顺子棋"
+         self.title = "六洲棋"
         // Do any additional setup after loading the view.
         chessView = ChessboardView()
         chessView.viewType = viewType
