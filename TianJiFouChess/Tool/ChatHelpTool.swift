@@ -175,11 +175,13 @@ extension ChatHelpTool: EMContactManagerDelegate {
     //用户B同意用户A的加好友请求后，用户A会收到这个回调
     func friendRequestDidApprove(byUser aUsername: String!) {
         print("同意\(aUsername)申请加好友")
+        PAMBManager.sharedInstance.showBriefMessage(message: "对方同意了你的好友请求！")
     }
 
     // 用户B拒绝用户A的加好友请求后，用户A会收到这个回调
     func friendRequestDidDecline(byUser aUsername: String!) {
         print("拒绝\(aUsername)申请加好友")
+        PAMBManager.sharedInstance.showBriefMessage(message: "对方拒绝了你的好友请求！")
     }
     //用户B删除与用户A的好友关系后，用户A，B会收到这个回调
     func friendshipDidRemove(byUser aUsername: String!) {

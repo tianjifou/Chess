@@ -55,7 +55,7 @@
         <scene sceneID="ngP-bS-FAV">
             <objects>
                 <navigationController hidesBottomBarWhenPushed="YES" id="6G0-Pt-Dxq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="好友" id="bUH-W6-fIm"/>
+                    <tabBarItem key="tabBarItem" tag="1002" title="好友" image="icon_xx1" selectedImage="icon_xx2" id="bUH-W6-fIm" customClass="BaseTabBarItem" customModule="TianJiFouChess" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wKS-i9-96i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -137,7 +137,7 @@
         <scene sceneID="9ui-in-B9f">
             <objects>
                 <navigationController id="9zd-ah-dXs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人中心" id="ZyO-vs-U8O"/>
+                    <tabBarItem key="tabBarItem" tag="1003" title="个人中心" image="icon_wd1" selectedImage="icon_wd2" id="ZyO-vs-U8O" customClass="BaseTabBarItem" customModule="TianJiFouChess" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GKh-bV-ryP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -172,7 +172,7 @@
         <scene sceneID="Kmt-pQ-bOJ">
             <objects>
                 <navigationController id="rqK-XZ-0oX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="游戏" id="19C-oa-5nD"/>
+                    <tabBarItem key="tabBarItem" tag="1001" title="游戏" image="icon_xy1" selectedImage="icon_xy2" id="19C-oa-5nD" customClass="BaseTabBarItem" customModule="TianJiFouChess" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WVS-YQ-RSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -331,4 +331,12 @@
             <point key="canvasLocation" x="-4389.6000000000004" y="-969.26536731634189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_wd1" width="54" height="54"/>
+        <image name="icon_wd2" width="54" height="54"/>
+        <image name="icon_xx1" width="54" height="54"/>
+        <image name="icon_xx2" width="54" height="54"/>
+        <image name="icon_xy1" width="54" height="54"/>
+        <image name="icon_xy2" width="54" height="54"/>
+    </resources>
 </document>

@@ -39,6 +39,7 @@ class AddFriendTableViewCell: UITableViewCell {
             return
         }
         if self.model?.type == 1 {
+            PAMBManager.sharedInstance.showBriefMessage(message: "发送添加好友信息成功!")
             EMClient.shared().contactManager.addContact(name, message: "test_\(name)")
         }else{
             EMClient.shared().contactManager.acceptInvitation(forUsername: name)

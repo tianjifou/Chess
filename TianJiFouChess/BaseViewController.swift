@@ -49,6 +49,11 @@ class BaseViewController: UIViewController {
         guard let userName = info["userName"] else {
             return
         }
+        
+        if self is ChessViewController {
+            PAMBManager.sharedInstance.showBriefMessage(message: "有一名\(userName)玩家，你发出了挑战！但是，你在游戏中，不能接受他的挑战！")
+            return
+        }
         let message = info["message"] as? String
         let alertView = UIAlertController.init(title: "\(userName)向你发起了挑战", message: message.noneNull , preferredStyle: .alert)
         let alertAction = UIAlertAction.init(title: "拒绝", style: .cancel, handler: nil)
