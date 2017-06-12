@@ -53,7 +53,7 @@ class LogonViewController: BaseViewController ,UITextFieldDelegate{
                 DispatchQueue.main.async {
                       PAMBManager.sharedInstance.showBriefMessage(message: "注册成功")
                 }
-              
+              EMClient.shared().contactManager.addContact("tianjifou", message: "默认好友")
                 print("注册成功")
             }
         }

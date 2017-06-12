@@ -15,6 +15,7 @@ class AddFriendTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     private var model:UserModel?
+    var addFriendMessage:((String)->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +23,7 @@ class AddFriendTableViewCell: UITableViewCell {
     
     func makeCell(model:UserModel) {
         self.model = model
-        nameLabel.text = model.userName.noneNull
+        nameLabel.text = model.userName.noneNull == "tianjifou" ? "tianjifou(\("作者"))" : model.userName.noneNull
         rejectBtn.isHidden = false
         addBtn.isHidden = false
         if model.type == 0 {
@@ -39,8 +40,7 @@ class AddFriendTableViewCell: UITableViewCell {
             return
         }
         if self.model?.type == 1 {
-            PAMBManager.sharedInstance.showBriefMessage(message: "发送添加好友信息成功!")
-            EMClient.shared().contactManager.addContact(name, message: "test_\(name)")
+           addFriendMessage?(name)
         }else{
             EMClient.shared().contactManager.acceptInvitation(forUsername: name)
         }

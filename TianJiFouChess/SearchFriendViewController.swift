@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Hyphenate
 class SearchFriendViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -102,12 +102,33 @@ extension SearchFriendViewController: UITableViewDelegate,UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddFriendTableViewCell", for: indexPath) as! AddFriendTableViewCell
-        
+        cell.addFriendMessage = {[weak self](name) in
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.addFriendMessage(userName: name)
+        }
         cell.makeCell(model: self.dataArray[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    private func addFriendMessage(userName:String) {
+        let alertView = UIAlertController.init(title: "添加好友", message: "原因？", preferredStyle: .alert)
+        let alertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        var textF: UITextField? = nil
+        alertView.addTextField { (textField) in
+            textF = textField
+        }
+        alertView.addAction(alertAction)
+        let challengeAction = UIAlertAction.init(title: "确定", style: .default) { (action) in
+            EMClient.shared().contactManager.addContact(userName, message: textF?.text.noneNull)
+            PAMBManager.sharedInstance.showBriefMessage(message: "发送成功")
+        }
+        alertView.addAction(challengeAction)
+        self.present(alertView, animated: true, completion: nil)
     }
 }

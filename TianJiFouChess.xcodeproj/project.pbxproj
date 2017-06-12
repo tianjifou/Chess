@@ -14,6 +14,7 @@
 		AD51BEDC1EBC304F0086FD7A /* ChessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51BEDB1EBC304F0086FD7A /* ChessModel.swift */; };
 		AD5EA59C1EEA532E00C7349A /* BaseTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EA59B1EEA532E00C7349A /* BaseTabBarItem.swift */; };
 		AD5EA59E1EEA7CAE00C7349A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EA59D1EEA7CAE00C7349A /* WebViewController.swift */; };
+		AD5EA5A31EEA81C000C7349A /* UIViewController+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5EA5A21EEA81C000C7349A /* UIViewController+ShowMessage.m */; };
 		AD66FE351ED424D400E30706 /* ShunZiChess.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD685B491ECBE3FE00EA006D /* BluetoothTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */; };
 		AD685B4A1ECBE3FE00EA006D /* ChessStepTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */; };
@@ -30,7 +31,6 @@
 		AD9DED501EE536D50048218E /* ChessEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DED4F1EE536D50048218E /* ChessEnum.swift */; };
 		ADA27B201EC97A6000AEA3C1 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */; };
 		ADA27B221EC9896200AEA3C1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */; };
-		ADA27B271EC98B1300AEA3C1 /* UIViewController+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */; };
 		ADA27B291EC98CF200AEA3C1 /* PALoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */; };
 		ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */; };
 		ADA27B2D1EC98EB200AEA3C1 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B2C1EC98EB200AEA3C1 /* UILabel+Extension.swift */; };
@@ -72,6 +72,8 @@
 		AD51BEDB1EBC304F0086FD7A /* ChessModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessModel.swift; sourceTree = "<group>"; };
 		AD5EA59B1EEA532E00C7349A /* BaseTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarItem.swift; sourceTree = "<group>"; };
 		AD5EA59D1EEA7CAE00C7349A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AD5EA5A11EEA81C000C7349A /* UIViewController+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowMessage.h"; sourceTree = "<group>"; };
+		AD5EA5A21EEA81C000C7349A /* UIViewController+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowMessage.m"; sourceTree = "<group>"; };
 		AD66FE331ED424D400E30706 /* ShunZiChess.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShunZiChess.pbobjc.h; sourceTree = "<group>"; };
 		AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShunZiChess.pbobjc.m; sourceTree = "<group>"; };
 		AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTool.swift; sourceTree = "<group>"; };
@@ -90,8 +92,6 @@
 		ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
 		ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ADA27B241EC98B1200AEA3C1 /* TianJiFouChess-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TianJiFouChess-Bridging-Header.h"; sourceTree = "<group>"; };
-		ADA27B251EC98B1300AEA3C1 /* UIViewController+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowMessage.h"; sourceTree = "<group>"; };
-		ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowMessage.m"; sourceTree = "<group>"; };
 		ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PALoadingView.swift; sourceTree = "<group>"; };
 		ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PADeviceSize.swift; sourceTree = "<group>"; };
 		ADA27B2C1EC98EB200AEA3C1 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 		ADA27B231EC989A800AEA3C1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				ADA27B251EC98B1300AEA3C1 /* UIViewController+ShowMessage.h */,
-				ADA27B261EC98B1300AEA3C1 /* UIViewController+ShowMessage.m */,
+				AD5EA5A11EEA81C000C7349A /* UIViewController+ShowMessage.h */,
+				AD5EA5A21EEA81C000C7349A /* UIViewController+ShowMessage.m */,
 				ADA27B241EC98B1200AEA3C1 /* TianJiFouChess-Bridging-Header.h */,
 				ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */,
 				ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */,
@@ -463,6 +463,7 @@
 				ADDE35E61EB32C9E009964F6 /* ViewController.swift in Sources */,
 				ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */,
 				AD685B4F1ECC27D000EA006D /* MainTabBarViewController.swift in Sources */,
+				AD5EA5A31EEA81C000C7349A /* UIViewController+ShowMessage.m in Sources */,
 				AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */,
 				AD51BED71EBC30230086FD7A /* ChessboardView.swift in Sources */,
 				AD685B4D1ECBE41A00EA006D /* ChatHelpTool.swift in Sources */,
@@ -483,7 +484,6 @@
 				AD685B581ECC3B7900EA006D /* UserModel.swift in Sources */,
 				ADA27B2D1EC98EB200AEA3C1 /* UILabel+Extension.swift in Sources */,
 				ADA27B311EC9919500AEA3C1 /* TJFString.swift in Sources */,
-				ADA27B271EC98B1300AEA3C1 /* UIViewController+ShowMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +670,7 @@
 					"\"SDWebImage\"",
 					"-lxml2",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ca85e8b0-23fc-49e1-871d-26a93909eea0";
@@ -719,6 +720,7 @@
 					"\"SDWebImage\"",
 					"-lxml2",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = tianjifou.TianJiFouChess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ca85e8b0-23fc-49e1-871d-26a93909eea0";
