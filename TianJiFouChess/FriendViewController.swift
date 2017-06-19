@@ -27,6 +27,10 @@ class FriendViewController: BaseViewController {
             
         })
         
+        ChatHelpTool.share.reloadFriendList = {
+            self.setData()
+        }
+        
         
 
     }
@@ -156,5 +160,22 @@ extension FriendViewController: UITableViewDelegate,UITableViewDataSource {
         }
         alertView.addAction(challengeAction)
         self.present(alertView, animated: true, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        EMClient.shared().contactManager.deleteContact(self.friendArray[indexPath.row].userName, isDeleteConversation: true) { (str, error) in
+            if error != nil {
+                TJFTool.errorForCode(code: error!.code)
+            }else {
+                self.friendArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .none)
+                PAMBManager.sharedInstance.showBriefMessage(message: "成功删除好友")
+            }
+        }
+        
+        
     }
 }

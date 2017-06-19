@@ -15,7 +15,7 @@ class ChatHelpTool: NSObject,EMGroupManagerDelegate,EMChatroomManagerDelegate {
     var reconnectTimer:Timer!
     var networkState:((EMConnectionState)->())?
     var buZiChessMessage:((EMMessage?)->())?
-    
+    var reloadFriendList:(()->())?
     private override init() {
         super.init()
         EMClient.shared().add(self, delegateQueue: nil)
@@ -194,9 +194,10 @@ extension ChatHelpTool: EMContactManagerDelegate {
     //用户B申请加A为好友后，用户A会收到这个回调
     func friendRequestDidReceive(fromUser aUsername: String!, message aMessage: String!) {
         print("\(aUsername)申请加好友,原因是\(aMessage)")
-        let alertView = UIAlertController.init(title: "\(aUsername!)申请加好友", message: "原因是\(aMessage!)", preferredStyle: .alert)
+        let alertView = UIAlertController.init(title: "\(aUsername!)申请加好友", message: "\(aMessage!)", preferredStyle: .alert)
         let alertAction = UIAlertAction.init(title: "同意", style: .default) { (action) in
             EMClient.shared().contactManager.acceptInvitation(forUsername: aUsername)
+            self.reloadFriendList?()
         }
         let rejectAction = UIAlertAction.init(title: "拒绝", style: .default) { (action) in
             EMClient.shared().contactManager.declineInvitation(forUsername: aUsername)

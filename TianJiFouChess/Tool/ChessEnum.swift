@@ -8,7 +8,7 @@
 
 import Foundation
 
-//游戏对战模式：人机，蓝牙，在线
+//游戏对战模式：同机，蓝牙，在线
 enum ChessType: Int {
     case manAnMachine,bluetooth,online
 }

@@ -58,6 +58,8 @@ class ViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
       
     }
+    
+  
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushChessViewController" {

@@ -153,7 +153,8 @@ class ChessStepTool: NSObject {
             pointRight.x = point.x + i
             i += 1
         }
-        if pointRight.x - pointLeft.x == 5 {
+        
+        if pointRight.x - pointLeft.x == 5 && (pointLeft.y != 5 || pointLeft.y != 0){
             return .sixChess
         }
         //南北方向
@@ -167,7 +168,7 @@ class ChessStepTool: NSObject {
             pointBottom.y = point.y + i
             i += 1
         }
-        if pointBottom.y - ponitTop.y == 5 {
+        if pointBottom.y - ponitTop.y == 5 && (ponitTop.x != 5 || ponitTop.x != 0) {
             return .sixChess
         }
         return nil

@@ -218,7 +218,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gz5-Id-opE">
                                 <rect key="frame" x="116" y="192" width="143" height="30"/>
-                                <state key="normal" title="人机对战"/>
+                                <state key="normal" title="同机对战"/>
                                 <connections>
                                     <action selector="manAndMachineFighting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rE4-Ft-eyR"/>
                                 </connections>
