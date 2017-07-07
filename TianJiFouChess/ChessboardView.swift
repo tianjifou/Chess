@@ -108,6 +108,7 @@ class ChessboardView: UIView {
             bluetoothChess(location: location)
         case ChessType.online:
             sendMessageChess(location: location)
+        default:()
        
         }
        

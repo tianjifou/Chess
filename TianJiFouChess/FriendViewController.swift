@@ -15,6 +15,7 @@ class FriendViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var friendArray:[UserModel] = []
     var textField:UITextField!
+    var gameType:GameType = .fiveInRowChess
     override func viewDidLoad() {
         super.viewDidLoad()
       

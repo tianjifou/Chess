@@ -8,9 +8,9 @@
 
 import Foundation
 
-//游戏对战模式：同机，蓝牙，在线
+//游戏对战模式：人机,同机，蓝牙，在线
 enum ChessType: Int {
-    case manAnMachine,bluetooth,online
+    case aiGame,manAnMachine,bluetooth,online
 }
 //棋盘位置状态：空子，白棋，黑棋，被吃位置
 enum FlagType:Int {
@@ -35,4 +35,8 @@ enum WinState:Int {
 //获得游戏状态
 enum GameState:Int {
     case challenge = 1,acceptChallenge,yiDongState,giveUpState
+}
+//五子棋，六洲棋
+enum GameType:Int {
+    case fiveInRowChess,LiuZhouChess
 }

@@ -21,7 +21,6 @@ class FiveInARowChessboardView: UIView {
     }
     var roleState:RoleState = .blackState
     var tiShiBlock:((String)->())?
-    var fightState:FightState = .buZiState
     var tempView:FlagImageView?
     var viewType:ChessType?
     var toSomePeople:String?
@@ -44,7 +43,6 @@ class FiveInARowChessboardView: UIView {
     fileprivate var whiteLastChessArray:[[FlagType]] = []
     fileprivate var blackLastChessArray:[[FlagType]] = []
     fileprivate var roleStateLast:RoleState = .whiteState
-    fileprivate var fightStateLast:FightState = .buZiState
     fileprivate var whiteRegretChessModel = RegretChessModel()
     fileprivate var blackRegretChessModel = RegretChessModel()
     override func draw(_ rect: CGRect) {
@@ -70,6 +68,7 @@ class FiveInARowChessboardView: UIView {
         let sws = SWSPoint()
         sws.x = 7
         sws.y = 7
+        self.isWaiting = true
         moveChess(swsPoint: sws)
         self.isWaiting = false
     }
@@ -88,9 +87,9 @@ class FiveInARowChessboardView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if self.isWaiting {
-//            return
-//        }
+        if self.isWaiting {
+            return
+        }
         guard let location = touches.first?.location(in: self) else {
             return
         }
@@ -98,9 +97,9 @@ class FiveInARowChessboardView: UIView {
         let swsPoint = SWSPoint()
         swsPoint.x = Int(round(Double(point.x-10)/Double(fiveChessWidth)))
         swsPoint.y = Int(round(Double(point.y-10)/Double(fiveChessWidth)))
-        self.isUser = true
-        moveChess(swsPoint:swsPoint)
        
+        moveChess(swsPoint:swsPoint)
+      
         
     }
     
@@ -131,33 +130,34 @@ class FiveInARowChessboardView: UIView {
             chessArray[swsPoint.x][swsPoint.y] = tempFlag
             AIFiveInARowChess.updateOneEffectScore(chessArray: chessArray, point: (swsPoint.x,swsPoint.y), AIScore: &AIScore, humanScore: &humanScore)
             logSomeThing()
-            if self.roleState == .blackState {
-                DispatchQueue.global().async { [weak self] in
-                    guard let weakSelf = self else {return}
-                    if  let point =  AIFiveInARowChess.getAIPoint(chessArray: &weakSelf.chessArray, role: .blackChess, AIScore: &weakSelf.AIScore, humanScore: &weakSelf.humanScore, deep: 6){
-                        let sws = SWSPoint()
-                        sws.x = point.0
-                        sws.y = point.1
-                        DispatchQueue.main.async {
-                           weakSelf.moveChess(swsPoint: sws) 
-                        }
-                        
-                        
-                    }
-                }
-                
-                
-            }
+            self.isWaiting = true
+           
             
             
-            self.isWaiting =  self.isUser ? true:false
             if  ChessStepTool.isFiveChess(swsPoint, chessArray) {
-                let strUser = self.isUser ? "您成功形成五子棋。" : "对方成功形成五子棋。"
+                let strUser = self.roleState == .blackState ? "您成功形成五子棋。" : "对方成功形成五子棋。"
                 self.tiShiBlock?(strUser)
                 self.isWaiting =  true
             }else {
                 if self.freeChessIsNone() {
                     self.tiShiBlock?("已经无路可走，和棋。")
+                }else{
+                    if self.roleState == .blackState {
+                        DispatchQueue.global().async { [weak self] in
+                            guard let weakSelf = self else {return}
+                            if  let point =  AIFiveInARowChess.getAIPoint(chessArray: &weakSelf.chessArray, role: .blackChess, AIScore: &weakSelf.AIScore, humanScore: &weakSelf.humanScore, deep: 6){
+                                let sws = SWSPoint()
+                                sws.x = point.0
+                                sws.y = point.1
+                                DispatchQueue.main.async {
+                                    weakSelf.moveChess(swsPoint: sws)
+                                    weakSelf.isWaiting = false
+                                }
+                                
+                                
+                            }
+                        }
+                    }
                 }
             }
             
@@ -196,12 +196,10 @@ class FiveInARowChessboardView: UIView {
             whiteRegretChessModel.lastChessArray.removeAll()
             whiteRegretChessModel.lastChessArray += chessArray
             whiteRegretChessModel.roleStateLast = roleState
-            whiteRegretChessModel.fightStateLast = fightState
         case .blackState:
             blackRegretChessModel.lastChessArray.removeAll()
             blackRegretChessModel.lastChessArray += chessArray
             blackRegretChessModel.roleStateLast = roleState
-            blackRegretChessModel.fightStateLast = fightState
         default:
             ()
         }

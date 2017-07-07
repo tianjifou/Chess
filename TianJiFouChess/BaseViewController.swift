@@ -31,7 +31,25 @@ class BaseViewController: UIViewController {
                 ()
             }
         }
+        if self.navigationController?.visibleViewController != tabBarController {
+            let leftBtn = customLeftBackButtonItem()
+            navigationItem.leftBarButtonItem = leftBtn
+        }
         
+       
+    }
+    
+    private func customLeftBackButtonItem() -> UIBarButtonItem {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 0, y: 0, width: 25.0, height: 18.0)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        btn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        btn.setImage(#imageLiteral(resourceName: "back_leftButton"), for: .normal)
+        btn.contentHorizontalAlignment = .left
+        return UIBarButtonItem(customView: btn)
+    }
+    func backAction() {
+     self.navigationController?.popViewController(animated: true)
     }
     
     fileprivate  func pushToChessChatRoom(_ name:String,_ role: Role) {

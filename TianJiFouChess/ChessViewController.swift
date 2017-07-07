@@ -13,37 +13,41 @@ class ChessViewController: BaseViewController {
     var viewType:ChessType?
     var toSomePeople:String?
     var role:Role?
+    var gameType:GameType = .fiveInRowChess
     private var chessView: ChessboardView!
     private var fiveChessView:FiveInARowChessboardView!
     @IBOutlet weak var againBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        test()
-        return
-         self.title = "六洲棋"
-        // Do any additional setup after loading the view.
-        chessView = ChessboardView()
-        chessView.viewType = viewType
-        chessView.frame = CGRect.init(x: (ScreenWidth-320)*0.5, y: 64, width: 320, height: 320)
-        chessView.backgroundColor = UIColor.clear
-        chessView.center = self.view.center
-        chessView.role = role
-        chessView.toSomePeople = toSomePeople
-        chessView.tiShiBlock = { [weak self](message) in
-            guard let weakSelf = self else {
-                return
+        if gameType == .fiveInRowChess{
+            self.title = "五子棋"
+            test()
+        }else {
+            self.title = "六洲棋"
+            // Do any additional setup after loading the view.
+            chessView = ChessboardView()
+            chessView.viewType = viewType
+            chessView.frame = CGRect.init(x: (ScreenWidth-320)*0.5, y: 64, width: 320, height: 320)
+            chessView.backgroundColor = UIColor.clear
+            chessView.center = self.view.center
+            chessView.role = role
+            chessView.toSomePeople = toSomePeople
+            chessView.tiShiBlock = { [weak self](message) in
+                guard let weakSelf = self else {
+                    return
+                }
+                weakSelf.alertView(message: message)
             }
-           weakSelf.alertView(message: message)
+            self.view.addSubview(chessView)
             
+            if viewType == ChessType.manAnMachine {
+                againBtn.isHidden = true
+            }
+             getMessage()
         }
-        self.view.addSubview(chessView)
         
-        if viewType == ChessType.manAnMachine {
-            againBtn.isHidden = true
-        }
-       let leftBtn = customLeftBackButtonItem()
-       navigationItem.leftBarButtonItem = leftBtn
-        getMessage()
+      
+       
     }
     
     func test() {
@@ -224,18 +228,8 @@ class ChessViewController: BaseViewController {
         }
     }
     
-    
-   private func customLeftBackButtonItem() -> UIBarButtonItem {
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 0, y: 0, width: 25.0, height: 18.0)
-        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
-        btn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        btn.setImage(#imageLiteral(resourceName: "back_leftButton"), for: .normal)
-        btn.contentHorizontalAlignment = .left
-        return UIBarButtonItem(customView: btn)
-    }
-    
-    func backAction() {
+        
+    override func backAction() {
         let alertView = UIAlertController.init(title: "退出", message: "你确定退出游戏吗？", preferredStyle: .alert)
         let alertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
         alertView.addAction(alertAction)
@@ -251,58 +245,66 @@ class ChessViewController: BaseViewController {
         }
         alertView.addAction(okAction)
         self.present(alertView, animated: true, completion: nil)
-        
-        
-        
+       
     }
     
     @IBAction func startAgainAction(_ sender: Any) {
-        if viewType == ChessType.manAnMachine {
-            chessView.isWaiting = false
-            chessView.startAgain()
-        }else if viewType == ChessType.bluetooth {
-            self.createBluetoothMessageVo(type: 7)
-        }else if viewType == ChessType.online {
-           self.createSendMessageDic(type: "8")
-        }
-    }
-
-    @IBAction func regretChessActoin(_ sender: Any) {
-        var whiteCount = 0
-        var blackCount = 0
-        for i in 0...5 {
-            for j in 0...5 {
-                if chessView.chessArray[i][j] == .whiteChess {
-                    whiteCount += 1
-                }
-                if chessView.chessArray[i][j] == .blackChess {
-                    blackCount += 1
-                }
+        if gameType == .LiuZhouChess{
+            if viewType == ChessType.manAnMachine {
+                chessView.isWaiting = false
+                chessView.startAgain()
+            }else if viewType == ChessType.bluetooth {
+                self.createBluetoothMessageVo(type: 7)
+            }else if viewType == ChessType.online {
+                self.createSendMessageDic(type: "8")
             }
-        }
-        
-        if whiteCount == 0 {
-            if chessView.role == .whiter {
-                return
-            }
-            if blackCount == 0 {
-                return
-            }
+        }else{
             
         }
         
-        if blackCount == 0 {
-            if chessView.role == .blacker {
-                return
+    }
+
+    @IBAction func regretChessActoin(_ sender: Any) {
+        if gameType == .LiuZhouChess{
+            var whiteCount = 0
+            var blackCount = 0
+            for i in 0...5 {
+                for j in 0...5 {
+                    if chessView.chessArray[i][j] == .whiteChess {
+                        whiteCount += 1
+                    }
+                    if chessView.chessArray[i][j] == .blackChess {
+                        blackCount += 1
+                    }
+                }
             }
+            
+            if whiteCount == 0 {
+                if chessView.role == .whiter {
+                    return
+                }
+                if blackCount == 0 {
+                    return
+                }
+                
+            }
+            
+            if blackCount == 0 {
+                if chessView.role == .blacker {
+                    return
+                }
+            }
+            
+            
+            if viewType == .bluetooth {
+                createBluetoothMessageVo(type: 4)
+            }else {
+                createSendMessageDic(type: "5")
+            }
+        }else{
+            
         }
-        
-        
-        if viewType == .bluetooth {
-           createBluetoothMessageVo(type: 4)
-        }else {
-           createSendMessageDic(type: "5")
-        }
+       
      
     }
     
@@ -334,14 +336,19 @@ class ChessViewController: BaseViewController {
     }
     
     @IBAction func giveUpAction(_ sender: Any) {
-        if viewType == ChessType.manAnMachine {
-            chessView.isWaiting = false
-            PAMBManager.sharedInstance.showBriefMessage(message: "对方认输，游戏结束。")
-        }else if viewType == ChessType.bluetooth {
-            self.createBluetoothMessageVo(type: 10)
-        }else if viewType == ChessType.online {
-            self.createSendMessageDic(type: "11")
+        if gameType == .LiuZhouChess{
+            if viewType == ChessType.manAnMachine {
+                chessView.isWaiting = false
+                PAMBManager.sharedInstance.showBriefMessage(message: "对方认输，游戏结束。")
+            }else if viewType == ChessType.bluetooth {
+                self.createBluetoothMessageVo(type: 10)
+            }else if viewType == ChessType.online {
+                self.createSendMessageDic(type: "11")
+            }
+        }else{
+            
         }
+       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

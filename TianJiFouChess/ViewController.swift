@@ -12,29 +12,18 @@ import Hyphenate
 
 class ViewController: BaseViewController {
     
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         
     }
-    @IBAction func gameExplain(_ sender: Any) {
+     
+    @IBAction func logOutAction(_ sender: Any) {
         let vc =  WebViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    
-    @IBAction func logOutAction(_ sender: Any) {
-        EMClient.shared().logout(true) { (error) in
-            if let error = error {
-                TJFTool.errorForCode(code: error.code)
-            }else {
-                TJFTool.setRootVCInitialViewController(storyboardName: "Login")
-            }
-            
-        }
     }
     
     @IBAction func manAndMachineFighting(_ sender: Any) {
@@ -53,8 +42,9 @@ class ViewController: BaseViewController {
     
     @IBAction func onlineFighting(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "FriendViewControllerId")
-       vc.hidesBottomBarWhenPushed = true
+        let vc = storyBoard.instantiateViewController(withIdentifier: "FriendViewControllerId") as! FriendViewController
+            vc.hidesBottomBarWhenPushed = true
+             vc.gameType = .LiuZhouChess
         self.navigationController?.pushViewController(vc, animated: true)
       
     }
@@ -63,15 +53,14 @@ class ViewController: BaseViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushChessViewController" {
+            let vc = segue.destination as! ChessViewController
+            vc.gameType = .LiuZhouChess
             switch sender as! String {
             case "manAndMachineFighting":
-                let vc = segue.destination as! ChessViewController
                 vc.viewType = .manAnMachine
             case "bluetoothFighting":
-                let vc = segue.destination as! ChessViewController
                 vc.viewType = .bluetooth
             case "onlineFighting":
-                let vc = segue.destination as! ChessViewController
                 vc.viewType = .online
             default:
                 ()
