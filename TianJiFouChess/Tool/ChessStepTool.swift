@@ -240,3 +240,119 @@ class ChessStepTool: NSObject {
        
     }
 }
+//mark 五子棋
+extension ChessStepTool {
+    //横向五子连珠（除去四边线的五子连珠）
+    static func isFiveChess(_ point:SWSPoint,_ chessArray: [[FlagType]]) -> Bool {
+        let type = chessArray[point.x][point.y]
+        let pointLeft = SWSPoint()
+        let pointRight = SWSPoint()
+        let pointTop = SWSPoint()
+        let pointBottom = SWSPoint()
+        let pointLeft45 = SWSPoint()
+        let pointRight45 = SWSPoint()
+        let pointTop135  = SWSPoint()
+        let pointBottom135 = SWSPoint()
+        //东西方向
+        var i = 0
+        while point.x - i >= 0 && chessArray[point.x - i][point.y] == type {
+            pointLeft.x = point.x - i
+            i += 1
+        }
+        i = 0
+        while point.x + i <= 14 && chessArray[point.x + i][point.y] == type {
+            pointRight.x = point.x + i
+            i += 1
+        }
+        
+        if pointRight.x - pointLeft.x == 4 && (pointLeft.y != 15 || pointLeft.y != 0){
+            return true
+        }
+        //南北方向
+        i = 0
+        while point.y - i >= 0 && chessArray[point.x][point.y-i] == type {
+            pointTop.y = point.y - i
+            i += 1
+        }
+        i = 0
+        while point.y + i <= 14 && chessArray[point.x][point.y+i] == type {
+            pointBottom.y = point.y + i
+            i += 1
+        }
+        if pointBottom.y - pointTop.y == 4 && (pointTop.x != 15 || pointTop.x != 0) {
+            return true
+        }
+        
+        // 东北方向
+         i = 0
+        while point.x - i >= 0 && point.y + i <= 14 && chessArray[point.x - i][point.y + i] == type {
+            pointLeft45.x = point.x - i
+            pointLeft45.y = point.y + i
+            i += 1
+        }
+        i = 0
+        while point.x + i <= 14 && point.y - i >= 0 && chessArray[point.x + i][point.y - i] == type {
+            pointRight45.x = point.x + i
+            pointRight45.y = point.y - i
+            i += 1
+        }
+        
+        if pointLeft45.y - pointRight45.y == 4{
+            return true
+        }
+        
+        //西北方向
+        i = 0
+        while point.x - i >= 0 && point.y - i >= 0 && chessArray[point.x - i][point.y - i] == type {
+            pointTop135.x = point.x - i
+            pointTop135.y = point.y - i
+            i += 1
+        }
+        i = 0
+        while point.x + i <= 14 && point.y + i <= 14 && chessArray[point.x + i][point.y + i] == type {
+            pointBottom135.x = point.x + i
+            pointBottom135.y = point.y + i
+            i += 1
+        }
+        if pointBottom135.y - pointTop135.y == 4{
+            return true
+        }
+        
+        return false
+    }
+    
+    static func woWin(chessArray:[[FlagType]])->FlagType?{
+        let point = SWSPoint()
+        for i in 0..<15{
+            for j in 0..<15{
+                point.x = i
+                point.y = j
+                if isFiveChess(point, chessArray) {
+                   return chessArray[i][j]
+                }
+            }
+        }
+        return nil
+    }
+    
+    static func touchRealFivePoint(_ point:  CGPoint) ->CGPoint{
+        var realPoint = CGPoint()
+        realPoint = point
+        if realPoint.x < 10 {
+            realPoint.x = 10
+        }
+        if realPoint.x > ScreenWidth-10 {
+            realPoint.x = ScreenWidth-10
+        }
+        if realPoint.y < 10 {
+            realPoint.y = 10
+        }
+        if realPoint.y > ScreenWidth-10 {
+            realPoint.y = ScreenWidth-10
+        }
+        realPoint.x -= 10
+        realPoint.y -= 10
+        return realPoint
+        
+    }
+}

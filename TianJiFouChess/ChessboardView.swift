@@ -574,9 +574,7 @@ extension ChessboardView {
         }
     }
     
-    func giveUp() {
-        
-    }
+   
 }
 class FlagImageView: UIImageView {
     var selectBlock:(()->())?

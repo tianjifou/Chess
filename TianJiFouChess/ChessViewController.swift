@@ -14,9 +14,12 @@ class ChessViewController: BaseViewController {
     var toSomePeople:String?
     var role:Role?
     private var chessView: ChessboardView!
+    private var fiveChessView:FiveInARowChessboardView!
     @IBOutlet weak var againBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        test()
+        return
          self.title = "六洲棋"
         // Do any additional setup after loading the view.
         chessView = ChessboardView()
@@ -41,6 +44,21 @@ class ChessViewController: BaseViewController {
        let leftBtn = customLeftBackButtonItem()
        navigationItem.leftBarButtonItem = leftBtn
         getMessage()
+    }
+    
+    func test() {
+        fiveChessView = FiveInARowChessboardView()
+        fiveChessView.frame = CGRect.init(x: 10, y: 64, width: ScreenWidth, height: ScreenWidth)
+        fiveChessView.backgroundColor = UIColor.clear
+        fiveChessView.center = self.view.center
+        fiveChessView.tiShiBlock = { [weak self](message) in
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.alertView(message: message)
+            
+        }
+        self.view.addSubview(fiveChessView)
     }
     
     func alertView(message:String) {
@@ -318,7 +336,7 @@ class ChessViewController: BaseViewController {
     @IBAction func giveUpAction(_ sender: Any) {
         if viewType == ChessType.manAnMachine {
             chessView.isWaiting = false
-            chessView.giveUp()
+            PAMBManager.sharedInstance.showBriefMessage(message: "对方认输，游戏结束。")
         }else if viewType == ChessType.bluetooth {
             self.createBluetoothMessageVo(type: 10)
         }else if viewType == ChessType.online {
@@ -330,6 +348,9 @@ class ChessViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        print("释放五子棋棋室")
+    }
 
  
 

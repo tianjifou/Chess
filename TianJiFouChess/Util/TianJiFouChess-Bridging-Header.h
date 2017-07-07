@@ -5,3 +5,4 @@
 #import "UIViewController+ShowMessage.h"
 #import "NSDataTool.h"
 #import  "ShunZiChess.pbobjc.h"
+#import  "TestSomeThing.h"

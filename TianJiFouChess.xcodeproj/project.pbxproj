@@ -28,6 +28,9 @@
 		AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */; };
 		AD685B631ECD49B600EA006D /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */; };
 		AD685B641ECD49B600EA006D /* AddFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */; };
+		AD7BBF281F04B0BF0055A461 /* AIFiveInARowChess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF271F04B0BF0055A461 /* AIFiveInARowChess.swift */; };
+		AD7BBF2A1F0A20920055A461 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF291F0A20920055A461 /* test.swift */; };
+		AD7BBF2C1F0A31E80055A461 /* AIFiveStepTool+Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF2B1F0A31E80055A461 /* AIFiveStepTool+Score.swift */; };
 		AD9DED501EE536D50048218E /* ChessEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DED4F1EE536D50048218E /* ChessEnum.swift */; };
 		ADA27B201EC97A6000AEA3C1 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */; };
 		ADA27B221EC9896200AEA3C1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */; };
@@ -43,6 +46,8 @@
 		ADDE35EE1EB32C9E009964F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADDE35EC1EB32C9E009964F6 /* LaunchScreen.storyboard */; };
 		ADDE35F91EB32C9E009964F6 /* TianJiFouChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE35F81EB32C9E009964F6 /* TianJiFouChessTests.swift */; };
 		ADDE36041EB32C9E009964F6 /* TianJiFouChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */; };
+		ADF29B361EF782980081666E /* FiveInARowChessboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF29B351EF782980081666E /* FiveInARowChessboardView.swift */; };
+		ADF29B3F1EF7DA680081666E /* TestSomeThing.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +81,7 @@
 		AD5EA5A21EEA81C000C7349A /* UIViewController+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowMessage.m"; sourceTree = "<group>"; };
 		AD66FE331ED424D400E30706 /* ShunZiChess.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShunZiChess.pbobjc.h; sourceTree = "<group>"; };
 		AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShunZiChess.pbobjc.m; sourceTree = "<group>"; };
-		AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTool.swift; sourceTree = "<group>"; };
+		AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BluetoothTool.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessStepTool.swift; sourceTree = "<group>"; };
 		AD685B481ECBE3FE00EA006D /* TJFTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJFTool.swift; sourceTree = "<group>"; };
 		AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHelpTool.swift; sourceTree = "<group>"; };
@@ -88,9 +93,12 @@
 		AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
 		AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendTableViewCell.xib; sourceTree = "<group>"; };
+		AD7BBF271F04B0BF0055A461 /* AIFiveInARowChess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFiveInARowChess.swift; sourceTree = "<group>"; };
+		AD7BBF291F0A20920055A461 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		AD7BBF2B1F0A31E80055A461 /* AIFiveStepTool+Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AIFiveStepTool+Score.swift"; sourceTree = "<group>"; };
 		AD9DED4F1EE536D50048218E /* ChessEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEnum.swift; sourceTree = "<group>"; };
 		ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
-		ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		ADA27B211EC9896200AEA3C1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		ADA27B241EC98B1200AEA3C1 /* TianJiFouChess-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TianJiFouChess-Bridging-Header.h"; sourceTree = "<group>"; };
 		ADA27B281EC98CF200AEA3C1 /* PALoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PALoadingView.swift; sourceTree = "<group>"; };
 		ADA27B2A1EC98DE100AEA3C1 /* PADeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PADeviceSize.swift; sourceTree = "<group>"; };
@@ -111,6 +119,9 @@
 		ADDE35FF1EB32C9E009964F6 /* TianJiFouChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TianJiFouChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianJiFouChessUITests.swift; sourceTree = "<group>"; };
 		ADDE36051EB32C9E009964F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADF29B351EF782980081666E /* FiveInARowChessboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiveInARowChessboardView.swift; sourceTree = "<group>"; };
+		ADF29B3D1EF7DA680081666E /* TestSomeThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSomeThing.h; sourceTree = "<group>"; };
+		ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestSomeThing.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +175,15 @@
 				AD66FE331ED424D400E30706 /* ShunZiChess.pbobjc.h */,
 				AD66FE341ED424D400E30706 /* ShunZiChess.pbobjc.m */,
 				AD685B461ECBE3FE00EA006D /* BluetoothTool.swift */,
+				AD7BBF271F04B0BF0055A461 /* AIFiveInARowChess.swift */,
+				AD7BBF2B1F0A31E80055A461 /* AIFiveStepTool+Score.swift */,
 				AD685B471ECBE3FE00EA006D /* ChessStepTool.swift */,
 				AD685B481ECBE3FE00EA006D /* TJFTool.swift */,
 				AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */,
 				AD9DED4F1EE536D50048218E /* ChessEnum.swift */,
+				AD7BBF291F0A20920055A461 /* test.swift */,
+				ADF29B3D1EF7DA680081666E /* TestSomeThing.h */,
+				ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 				AD685B551ECC399D00EA006D /* FriendViewController.swift */,
 				AD685B591ECD3A7A00EA006D /* SearchFriendViewController.swift */,
 				AD51BED41EBC30230086FD7A /* ChessboardView.swift */,
+				ADF29B351EF782980081666E /* FiveInARowChessboardView.swift */,
 				AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */,
 				AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */,
 				ADA27B231EC989A800AEA3C1 /* Util */,
@@ -460,11 +477,15 @@
 				AD685B491ECBE3FE00EA006D /* BluetoothTool.swift in Sources */,
 				AD5EA59E1EEA7CAE00C7349A /* WebViewController.swift in Sources */,
 				AD66FE351ED424D400E30706 /* ShunZiChess.pbobjc.m in Sources */,
+				AD7BBF2A1F0A20920055A461 /* test.swift in Sources */,
 				ADDE35E61EB32C9E009964F6 /* ViewController.swift in Sources */,
 				ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */,
 				AD685B4F1ECC27D000EA006D /* MainTabBarViewController.swift in Sources */,
 				AD5EA5A31EEA81C000C7349A /* UIViewController+ShowMessage.m in Sources */,
+				ADF29B3F1EF7DA680081666E /* TestSomeThing.mm in Sources */,
 				AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */,
+				AD7BBF2C1F0A31E80055A461 /* AIFiveStepTool+Score.swift in Sources */,
+				ADF29B361EF782980081666E /* FiveInARowChessboardView.swift in Sources */,
 				AD51BED71EBC30230086FD7A /* ChessboardView.swift in Sources */,
 				AD685B4D1ECBE41A00EA006D /* ChatHelpTool.swift in Sources */,
 				AD685B561ECC399D00EA006D /* FriendViewController.swift in Sources */,
@@ -475,6 +496,7 @@
 				AD685B4A1ECBE3FE00EA006D /* ChessStepTool.swift in Sources */,
 				AD685B631ECD49B600EA006D /* AddFriendTableViewCell.swift in Sources */,
 				ADDE35E41EB32C9E009964F6 /* AppDelegate.swift in Sources */,
+				AD7BBF281F04B0BF0055A461 /* AIFiveInARowChess.swift in Sources */,
 				ADA27B221EC9896200AEA3C1 /* BaseViewController.swift in Sources */,
 				AD5EA59C1EEA532E00C7349A /* BaseTabBarItem.swift in Sources */,
 				AD096B741ED95CC50081B3CA /* Timer+Extension.swift in Sources */,

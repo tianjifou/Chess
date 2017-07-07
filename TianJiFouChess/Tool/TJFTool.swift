@@ -76,4 +76,20 @@ class TJFTool {
         return str
     }
     
+    static func greatThan(a:Float,b:Float)->Bool {
+        return a >= b*1.1
+    }
+    
+    static func greatOrEqualThan(a:Float,b:Float)->Bool {
+        return a * 1.1 >= b
+    }
+    static func littleThan(a:Float,b:Float)->Bool {
+        return a * 1.1 <= b
+    }
+    static func littleOrEqualThan(a:Float,b:Float)->Bool {
+        return a <= b * 1.1
+    }
+    static func equal(a:Float,b:Float)->Bool {
+       return (a * 1.1 >= b) && (a <= b * 1.1)
+    }
 }
