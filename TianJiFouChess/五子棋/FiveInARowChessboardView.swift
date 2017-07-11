@@ -40,7 +40,7 @@ class FiveInARowChessboardView: UIView {
         }
         return arrData
     }()
-    let aiRoler = TestSomeThing()
+ 
     fileprivate var whiteLastChessArray:[[FlagType]] = []
     fileprivate var blackLastChessArray:[[FlagType]] = []
     fileprivate var roleStateLast:RoleState = .blackState
