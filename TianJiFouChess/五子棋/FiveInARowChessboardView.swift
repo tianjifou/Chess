@@ -289,13 +289,16 @@ class FiveInARowChessboardView: UIView {
         self.layer.sublayers?.forEach{
             $0.removeFromSuperlayer()
         }
+         chessArray = createChessArray()
         self.createLine()
-        chessArray = createChessArray()
+       
         if viewType == .aiGame{
             AIScore.removeAll()
             humanScore.removeAll()
             AIScore = Array.init(repeating: Array.init(repeating: 0, count: 15), count: 15)
             humanScore = Array.init(repeating: Array.init(repeating: 0, count: 15), count: 15)
+            self.role = .blacker
+        
         }
        
        

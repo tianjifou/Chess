@@ -346,7 +346,7 @@ class ChessViewController: BaseViewController {
             }else if viewType == ChessType.online {
                 self.createSendMessageDic(type: "8")
             }else if viewType == ChessType.aiGame{/////to do
-                
+                 fiveChessView.startAgain()
         }
         
     }
