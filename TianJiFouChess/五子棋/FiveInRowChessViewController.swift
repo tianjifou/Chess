@@ -29,7 +29,7 @@ class FiveInRowChessViewController: BaseViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "FriendViewControllerId")as! FriendViewController
         vc.hidesBottomBarWhenPushed = true
-        vc.gameType = .fiveInRowChess
+        vc.chessType = .fiveInRowChess
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -45,9 +45,9 @@ class FiveInRowChessViewController: BaseViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pushChessViewController" {
+        if segue.identifier == "pushFiveChess" {
             let vc = segue.destination as! ChessViewController
-            vc.gameType = .fiveInRowChess
+            vc.chessType = .fiveInRowChess
             switch sender as! String {
             case "aiGame":
                 vc.viewType = .aiGame

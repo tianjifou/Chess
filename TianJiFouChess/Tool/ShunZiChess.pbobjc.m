@@ -423,10 +423,12 @@ typedef struct PointMessage__storage_ {
 @dynamic from;
 @dynamic to;
 @dynamic hasPoint, point;
+@dynamic chessType;
 
 typedef struct ChallengeMessage__storage_ {
   uint32_t _has_storage_[1];
   uint32_t typeRole;
+  uint32_t chessType;
   NSString *from;
   NSString *to;
   PointMessage *point;
@@ -474,6 +476,15 @@ typedef struct ChallengeMessage__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "chessType",
+        .dataTypeSpecific.className = NULL,
+        .number = ChallengeMessage_FieldNumber_ChessType,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ChallengeMessage__storage_, chessType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ChallengeMessage class]
@@ -483,6 +494,11 @@ typedef struct ChallengeMessage__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(ChallengeMessage__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\005\t\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

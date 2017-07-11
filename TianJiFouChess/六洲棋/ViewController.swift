@@ -44,7 +44,7 @@ class ViewController: BaseViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "FriendViewControllerId") as! FriendViewController
             vc.hidesBottomBarWhenPushed = true
-             vc.gameType = .LiuZhouChess
+             vc.chessType = .LiuZhouChess
         self.navigationController?.pushViewController(vc, animated: true)
       
     }
@@ -54,7 +54,7 @@ class ViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushChessViewController" {
             let vc = segue.destination as! ChessViewController
-            vc.gameType = .LiuZhouChess
+            vc.chessType = .LiuZhouChess
             switch sender as! String {
             case "manAndMachineFighting":
                 vc.viewType = .manAnMachine

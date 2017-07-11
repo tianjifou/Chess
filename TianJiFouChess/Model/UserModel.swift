@@ -18,6 +18,8 @@ class MessageModel: NSObject {
     // 4:对方已退出游戏 5:对方请求悔棋 6:接受对方悔棋 7:拒绝对方悔棋 8:对方请求重来一局 9:接受对方重新来 10: 拒绝对方重新来 11对方认输
     var  gameType:String?
     var challengeList:ChallengeList?
+    //1==五子棋，2==六洲棋
+    var chessType:String?
     var pointList:PointList?
         init(dictionary:[String:Any]) {
             super.init()

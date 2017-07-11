@@ -92,4 +92,27 @@ class TJFTool {
     static func equal(a:Float,b:Float)->Bool {
        return (a * 1.1 >= b) && (a <= b * 1.1)
     }
+    
+   static func pushToChessChatRoom(_ name:String,_ role: Role,chessType:GameType) {
+       guard  let cureentVc = self.getCurrentVC() else {
+          return
+       }
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ChessViewcontrollerID") as! ChessViewController
+        vc.toSomePeople = name
+        vc.role = role
+        vc.viewType = .online
+        vc.chessType = chessType
+        vc.hidesBottomBarWhenPushed = true
+        cureentVc.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+   static func getCurrentVC() -> UIViewController?{
+        if let topController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarViewController{
+            if let topSelectVC = topController.selectedViewController as? UINavigationController,let currentMainVC = topSelectVC.viewControllers.last{
+                return currentMainVC.navigationController?.viewControllers.last
+            }
+        }
+        return nil
+    }
 }

@@ -65,7 +65,7 @@ class PALoadingView: UIView {
         hud!.mode = .customView
         hud!.customView = loadingView
         hud!.opacity = 0
-        
+        hud!.removeFromSuperViewOnHide = true
         return hud!
     }
     

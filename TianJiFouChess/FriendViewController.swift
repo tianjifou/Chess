@@ -15,7 +15,7 @@ class FriendViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var friendArray:[UserModel] = []
     var textField:UITextField!
-    var gameType:GameType = .fiveInRowChess
+    var chessType:GameType?
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -115,7 +115,32 @@ class FriendViewController: BaseViewController {
             
         }
     }
-   
+    
+    fileprivate func showAlertView(userName:String) {
+        let alertView = UIAlertController.init(title: "挑战", message: "向\(userName)发起挑战？", preferredStyle: .alert)
+        let alertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        alertView.addTextField { (textField) in
+            self.textField = textField
+        }
+        alertView.addAction(alertAction)
+        let challengeAction = UIAlertAction.init(title: "挑战", style: .default) { (action) in
+            
+            let dic = ["gameType":"1","challengeList":["from":EMClient.shared().currentUsername,"to":userName,"message": self.textField.text.noneNull],"chessType":self.chessType == .fiveInRowChess ? "1" : "2"] as [String : Any]
+            guard let message = ChatHelpTool.sendTextMessage(text: "games", toUser: userName, messageType: EMChatTypeChat, messageExt: dic)else{
+                return
+            }
+            ChatHelpTool.senMessage(aMessage: message, progress: nil, completion: { (message, error) in
+                if let error = error {
+                    TJFTool.errorForCode(code: error.code)
+                }else{
+                    PAMBManager.sharedInstance.showBriefMessage(message: "发送成功")
+                }
+                print(message ?? "",error ?? "")
+            })
+        }
+        alertView.addAction(challengeAction)
+        self.view.window?.rootViewController?.present(alertView, animated: true, completion: nil)
+    }
 
 }
 
@@ -138,30 +163,32 @@ extension FriendViewController: UITableViewDelegate,UITableViewDataSource {
         guard let userName = self.friendArray[indexPath.row].userName else {
             return
         }
-        let alertView = UIAlertController.init(title: "挑战", message: "向\(userName)发起挑战？", preferredStyle: .alert)
-        let alertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
-        alertView.addTextField { (textField) in
-          self.textField = textField
-        }
-        alertView.addAction(alertAction)
-        let challengeAction = UIAlertAction.init(title: "挑战", style: .default) { (action) in
-            
-           let dic = ["gameType":"1","challengeList":["from":EMClient.shared().currentUsername,"to":userName,"message": self.textField.text.noneNull]] as [String : Any]
-           guard let message = ChatHelpTool.sendTextMessage(text: "games", toUser: userName, messageType: EMChatTypeChat, messageExt: dic)else{
-                return
-            }
-            ChatHelpTool.senMessage(aMessage: message, progress: nil, completion: { (message, error) in
-                if let error = error {
-                    TJFTool.errorForCode(code: error.code)
-                }else{
-                    PAMBManager.sharedInstance.showBriefMessage(message: "发送成功")
-                }
-                print(message ?? "",error ?? "")
+        
+        if self.chessType == nil {
+            let view = UIAlertController.init(title: "棋型", message: "", preferredStyle: .actionSheet)
+             let alertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+            let fiveAction = UIAlertAction.init(title: "五子棋", style: .default, handler: {(action) in
+              self.chessType = .fiveInRowChess
+                self.showAlertView(userName: userName)
             })
+            let LiuAction = UIAlertAction.init(title: "六洲棋", style: .default, handler: {(action) in
+                self.chessType = .LiuZhouChess
+                self.showAlertView(userName: userName)
+            })
+            view.addAction(alertAction)
+            view.addAction(fiveAction)
+            view.addAction(LiuAction)
+            self.view.window?.rootViewController?.present(view, animated: true, completion: nil)
+            self.chessType = nil
+        }else {
+            self.showAlertView(userName: userName)
         }
-        alertView.addAction(challengeAction)
-        self.present(alertView, animated: true, completion: nil)
+        
+       
     }
+    
+    
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }

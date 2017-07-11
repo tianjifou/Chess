@@ -201,6 +201,7 @@ typedef GPB_ENUM(ChallengeMessage_FieldNumber) {
   ChallengeMessage_FieldNumber_From = 2,
   ChallengeMessage_FieldNumber_To = 3,
   ChallengeMessage_FieldNumber_Point = 4,
+  ChallengeMessage_FieldNumber_ChessType = 5,
 };
 
 /**
@@ -208,7 +209,7 @@ typedef GPB_ENUM(ChallengeMessage_FieldNumber) {
  **/
 @interface ChallengeMessage : GPBMessage
 
-/** 消息类型状态 1:我是白棋 2:我是黑棋 3:对方已退出游戏 4:对方请求悔棋 5:接受对方悔棋 6:拒绝对方悔棋 7:对方请求重来一句 8:接受对方重新来 9: 拒绝对方重新来 */
+/** 消息类型状态 1:我是白棋 2:我是黑棋 3:对方已退出游戏 4:对方请求悔棋 5:接受对方悔棋 6:拒绝对方悔棋 7:对方请求重来一局 8:接受对方重新来 9: 拒绝对方重新来 10:对方认输 */
 @property(nonatomic, readwrite) uint32_t typeRole;
 
 /** 发送者 */
@@ -221,6 +222,9 @@ typedef GPB_ENUM(ChallengeMessage_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) PointMessage *point;
 /** Test to see if @c point has been set. */
 @property(nonatomic, readwrite) BOOL hasPoint;
+
+/** 棋的类型: 1:五子棋，2：六洲棋 */
+@property(nonatomic, readwrite) uint32_t chessType;
 
 @end
 

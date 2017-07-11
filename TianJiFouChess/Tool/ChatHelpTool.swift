@@ -11,7 +11,7 @@ import Hyphenate
 
 class ChatHelpTool: NSObject,EMGroupManagerDelegate,EMChatroomManagerDelegate {
     static let share = ChatHelpTool()
-    var gotoChessVCBlock:((String,Role)->())?
+
     var reconnectTimer:Timer!
     var networkState:((EMConnectionState)->())?
     var buZiChessMessage:((EMMessage?)->())?
@@ -31,7 +31,48 @@ class ChatHelpTool: NSObject,EMGroupManagerDelegate,EMChatroomManagerDelegate {
         print(error)
     }
    
-    
+    func letterOfChallengeAction(_ info: [String:String]) {
+        
+        guard let userName = info["userName"] else {
+            return
+        }
+        
+        if (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.navigationController?.visibleViewController is ChessViewController {
+            PAMBManager.sharedInstance.showBriefMessage(message: "有一名\(userName)玩家，你发出了挑战！但是，你在游戏中，不能接受他的挑战！")
+            return
+        }
+        let message = info["message"]
+        let chessType = info["chessType"]
+        let alertView = UIAlertController.init(title: "\(userName)向你发起了挑战", message: message.noneNull , preferredStyle: .alert)
+        let alertAction = UIAlertAction.init(title: "拒绝", style: .cancel, handler: nil)
+        
+        alertView.addAction(alertAction)
+        let challengeAction = UIAlertAction.init(title: "接受", style: .default) { (action) in
+            
+            let dic = ["gameType":"2","challengeList":["from":EMClient.shared().currentUsername,"to":userName,"message":""],"chessType":chessType.noneNull] as [String : Any]
+            guard let message = ChatHelpTool.sendTextMessage(text: "games", toUser: userName , messageType: EMChatTypeChat, messageExt: dic)else{
+                return
+            }
+            ChatHelpTool.senMessage(aMessage: message, progress: nil, completion: { (message, error) in
+                if let error = error {
+                    TJFTool.errorForCode(code: error.code)
+                }else{
+                    PAMBManager.sharedInstance.showBriefMessage(message: "发送成功")
+                    var role:Role = .whiter
+                    var gameType:GameType = .LiuZhouChess
+                    if chessType == "1" {
+                        role = .blacker
+                        gameType = .fiveInRowChess
+                    }
+                    TJFTool.pushToChessChatRoom(userName ,role,chessType: gameType)
+                    
+                }
+                print(message ?? "",error ?? "")
+            })
+        }
+        alertView.addAction(challengeAction)
+        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alertView, animated: true, completion: nil)
+    }
     
     deinit {
         EMClient.shared().removeDelegate(self)
@@ -130,10 +171,17 @@ extension ChatHelpTool: EMChatManagerDelegate{
                 if  let data = message.ext as? [String:Any] {
                     let model = MessageModel.init(dictionary: data)
                     if model.gameType == "1" {
+                    self.letterOfChallengeAction(["userName":message.from,"message":(model.challengeList?.message).noneNull,"chessType":model.chessType.noneNull])
                     
-                    NotificationCenter.default.post(name: BaseViewController.letterOfChallenge, object: self, userInfo: ["userName":message.from,"message":(model.challengeList?.message).noneNull])
                     }else if model.gameType == "2" {
-                       gotoChessVCBlock?(message.from,.blacker)
+                        var role:Role = .blacker
+                        var gameType:GameType = .LiuZhouChess
+                        if model.chessType == "1" {
+                            role = .whiter
+                            gameType = .fiveInRowChess
+                        }
+                        TJFTool.pushToChessChatRoom(message.from,role,chessType: gameType)
+                     
                     }else {
                        self.buZiChessMessage?(message)
                     }

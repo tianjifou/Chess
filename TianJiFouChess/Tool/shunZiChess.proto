@@ -43,8 +43,9 @@ message PointMessage {
 }
 // 发送棋子步骤
 message ChallengeMessage {
-uint32 type_role = 1;//消息类型状态 1:我是白棋 2:我是黑棋 3:对方已退出游戏 4:对方请求悔棋 5:接受对方悔棋 6:拒绝对方悔棋 7:对方请求重来一局 8:接受对方重新来 9: 拒绝对方重新来 10:对方认输
+  uint32 type_role = 1;//消息类型状态 1:我是白棋 2:我是黑棋 3:对方已退出游戏 4:对方请求悔棋 5:接受对方悔棋 6:拒绝对方悔棋 7:对方请求重来一局 8:接受对方重新来 9: 拒绝对方重新来 10:对方认输
   string from = 2; // 发送者
   string to = 3;   // 接收者
   PointMessage  point = 4;//位置
+  uint32 chessType = 5;//棋的类型: 1:五子棋，2：六洲棋
 }

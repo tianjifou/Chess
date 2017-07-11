@@ -13,13 +13,13 @@ class ChessViewController: BaseViewController {
     var viewType:ChessType?
     var toSomePeople:String?
     var role:Role?
-    var gameType:GameType = .fiveInRowChess
+    var chessType:GameType = .fiveInRowChess
     private var chessView: ChessboardView!
     private var fiveChessView:FiveInARowChessboardView!
     @IBOutlet weak var againBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if gameType == .fiveInRowChess{
+        if chessType == .fiveInRowChess{
             self.title = "五子棋"
             test()
         }else {
@@ -40,13 +40,13 @@ class ChessViewController: BaseViewController {
             }
             self.view.addSubview(chessView)
             
-            if viewType == ChessType.manAnMachine {
-                againBtn.isHidden = true
-            }
-             getMessage()
+           
         }
         
-      
+        if viewType == ChessType.manAnMachine {
+            againBtn.isHidden = true
+        }
+        getMessage()
        
     }
     
@@ -55,6 +55,9 @@ class ChessViewController: BaseViewController {
         fiveChessView.frame = CGRect.init(x: 10, y: 64, width: ScreenWidth, height: ScreenWidth)
         fiveChessView.backgroundColor = UIColor.clear
         fiveChessView.center = self.view.center
+        fiveChessView.viewType = viewType
+        fiveChessView.role = .blacker
+        fiveChessView.toSomePeople = toSomePeople
         fiveChessView.tiShiBlock = { [weak self](message) in
             guard let weakSelf = self else {
                 return
@@ -82,13 +85,23 @@ class ChessViewController: BaseViewController {
             }
             if  let data = message.ext as? [String:Any] {
                 let model = MessageModel.init(dictionary: data)
-                weakSelf.chessView.isUser = false
+                if weakSelf.chessType == .LiuZhouChess{
+                     weakSelf.chessView.isUser = false
+                }else if weakSelf.chessType == .fiveInRowChess{
+                     weakSelf.fiveChessView.isUser = false
+                }
+               
                 switch model.gameType.noneNull {
                 case "3":
                     let swsPoint = SWSPoint()
                     swsPoint.x = model.pointList?.xx as? Int ?? 0
                     swsPoint.y = model.pointList?.yy as? Int ?? 0
-                    weakSelf.chessView.bujuChess(swsPoint: swsPoint)
+                    if weakSelf.chessType == .LiuZhouChess{
+                         weakSelf.chessView.bujuChess(swsPoint: swsPoint)
+                    }else if weakSelf.chessType == .fiveInRowChess{
+                        weakSelf.fiveChessView.moveChess(swsPoint: swsPoint)
+                    }
+                   
                 case "4":
                     weakSelf.alertView(message: "对方已退出游戏")
                 case "5":
@@ -102,14 +115,24 @@ class ChessViewController: BaseViewController {
                         let okAction = UIAlertAction.init(title: "同意", style: .default) { (action) in
                             
                             weakSelf.createSendMessageDic(type: "6",success: {
-                                weakSelf.chessView.regretChess(active: false)
+                                if weakSelf.chessType == .LiuZhouChess{
+                                    weakSelf.chessView.regretChess(active: false)
+                                }else if weakSelf.chessType == .fiveInRowChess{
+                                    weakSelf.fiveChessView.regretChess(active: false)
+                                }
+                                
                             })
                         }
                         alertView.addAction(okAction)
                         weakSelf.present(alertView, animated: true, completion: nil)
                 case "6":
                     PAMBManager.sharedInstance.showBriefMessage(message: "对方同意你悔棋！")
-                    weakSelf.chessView.regretChess(active: true)
+                    if weakSelf.chessType == .LiuZhouChess{
+                        weakSelf.chessView.regretChess(active: true)
+                    }else if weakSelf.chessType == .fiveInRowChess{
+                         weakSelf.fiveChessView.regretChess(active: true)
+                    }
+                  
                 case "7":
                     PAMBManager.sharedInstance.showBriefMessage(message: "对方不同意你悔棋！")
                 case "8":
@@ -122,8 +145,14 @@ class ChessViewController: BaseViewController {
                     let okAction = UIAlertAction.init(title: "同意", style: .default) { (action) in
                         
                         weakSelf.createSendMessageDic(type: "9", success: {
-                            weakSelf.chessView.role = weakSelf.role
-                            weakSelf.chessView.startAgain()
+                            if weakSelf.chessType == .LiuZhouChess{
+                                weakSelf.chessView.role = weakSelf.role
+                                weakSelf.chessView.startAgain()
+                            }else if weakSelf.chessType == .fiveInRowChess{
+                                weakSelf.fiveChessView.role = weakSelf.role
+                                weakSelf.fiveChessView.startAgain()
+                            }
+                            
                         })
                     
                     }
@@ -131,8 +160,14 @@ class ChessViewController: BaseViewController {
                     weakSelf.present(alertView, animated: true, completion: nil)
                 case "9":
                     PAMBManager.sharedInstance.showBriefMessage(message: "对方同意再来一局！")
-                    weakSelf.chessView.role = weakSelf.role
-                    weakSelf.chessView.startAgain()
+                    if weakSelf.chessType == .LiuZhouChess{
+                        weakSelf.chessView.role = weakSelf.role
+                        weakSelf.chessView.startAgain()
+                    }else if weakSelf.chessType == .fiveInRowChess{
+                        weakSelf.fiveChessView.role = weakSelf.role
+                        weakSelf.fiveChessView.startAgain()
+                    }
+                    
                 case "10":
                     PAMBManager.sharedInstance.showBriefMessage(message: "对方不同意再来一局！")
                 case "11":
@@ -153,22 +188,46 @@ class ChessViewController: BaseViewController {
             guard let model = message as? ChallengeMessage  else {
                 return
             }
-             weakSelf.chessView.isUser = false
+            if weakSelf.chessType == .LiuZhouChess{
+                weakSelf.chessView.isUser = false
+            }else if weakSelf.chessType == .fiveInRowChess{
+                weakSelf.fiveChessView.isUser = false
+            }
             switch model.typeRole {
             case 1,2:
-                if weakSelf.chessView.role == nil {
-                    if model.typeRole == 1 {
-                        weakSelf.chessView.role = .blacker
-                    }else {
-                        weakSelf.chessView.role = .whiter
+                
+                    if weakSelf.chessType == .LiuZhouChess{
+                        if weakSelf.chessView.role == nil {
+                            if model.typeRole == 1 {
+                                weakSelf.chessView.role = .blacker
+                            }else {
+                                weakSelf.chessView.role = .whiter
+                            }
+                        }
+                        
+                    }else if weakSelf.chessType == .fiveInRowChess{
+                        if weakSelf.fiveChessView.role == nil {
+                            if model.typeRole == 1 {
+                                weakSelf.fiveChessView.role = .blacker
+                            }else {
+                                weakSelf.fiveChessView.role = .whiter
+                            }
+                        }
+                        
                     }
-                }
+                    
+               
                 
                 
                 let swsPoint = SWSPoint()
                 swsPoint.x = Int(model.point.xx )
                 swsPoint.y = Int(model.point.yy )
-                weakSelf.chessView.bujuChess(swsPoint: swsPoint)
+                if weakSelf.chessType == .LiuZhouChess{
+                    weakSelf.chessView.bujuChess(swsPoint: swsPoint)
+                }else if weakSelf.chessType == .fiveInRowChess{
+                   weakSelf.fiveChessView.moveChess(swsPoint: swsPoint)
+                }
+                
             case 3:
                 weakSelf.alertView(message: "对方已退出游戏")
             case 4:
@@ -181,7 +240,12 @@ class ChessViewController: BaseViewController {
                 let okAction = UIAlertAction.init(title: "同意", style: .default) { (action) in
                     
                    weakSelf.createBluetoothMessageVo(type: 5, success: {
-                       weakSelf.chessView.regretChess(active: false)
+                    if weakSelf.chessType == .LiuZhouChess{
+                        weakSelf.chessView.regretChess(active: false)
+                    }else if weakSelf.chessType == .fiveInRowChess{
+                        weakSelf.fiveChessView.regretChess(active: false)
+                    }
+                    
                     })
                    
                 }
@@ -189,7 +253,12 @@ class ChessViewController: BaseViewController {
                 weakSelf.present(alertView, animated: true, completion: nil)
             case 5:
                 PAMBManager.sharedInstance.showBriefMessage(message: "对方同意你悔棋！")
-                weakSelf.chessView.regretChess(active: true)
+                if weakSelf.chessType == .LiuZhouChess{
+                   weakSelf.chessView.regretChess(active: true)
+                }else if weakSelf.chessType == .fiveInRowChess{
+                    weakSelf.fiveChessView.regretChess(active: true)
+                }
+                
             case 6:
                 PAMBManager.sharedInstance.showBriefMessage(message: "对方不同意你悔棋！")
             case 7:
@@ -202,9 +271,16 @@ class ChessViewController: BaseViewController {
                 let okAction = UIAlertAction.init(title: "同意", style: .default) { (action) in
                     
                     weakSelf.createBluetoothMessageVo(type: 8, success: {
-                        weakSelf.chessView.isWaiting = false
-                        weakSelf.chessView.role = nil
-                        weakSelf.chessView.startAgain()
+                        if weakSelf.chessType == .LiuZhouChess{
+                            weakSelf.chessView.isWaiting = false
+                            weakSelf.chessView.role = nil
+                            weakSelf.chessView.startAgain()
+                        }else if weakSelf.chessType == .fiveInRowChess{
+                            weakSelf.fiveChessView.isWaiting = false
+                            weakSelf.fiveChessView.role = nil
+                            weakSelf.fiveChessView.startAgain()
+                        }
+                       
                     })
                     
                     
@@ -213,8 +289,14 @@ class ChessViewController: BaseViewController {
                 weakSelf.present(alertView, animated: true, completion: nil)
             case 8:
                  PAMBManager.sharedInstance.showBriefMessage(message: "对方同意再来一局！")
-                 weakSelf.chessView.role = nil
-                 weakSelf.chessView.startAgain()
+                 if weakSelf.chessType == .LiuZhouChess{
+                    weakSelf.chessView.role = nil
+                    weakSelf.chessView.startAgain()
+                 }else if weakSelf.chessType == .fiveInRowChess{
+                    weakSelf.fiveChessView.role = nil
+                    weakSelf.fiveChessView.startAgain()
+                 }
+                
             case 9:
                  PAMBManager.sharedInstance.showBriefMessage(message: "对方不同意再来一局！")
             case 10:
@@ -249,23 +331,28 @@ class ChessViewController: BaseViewController {
     }
     
     @IBAction func startAgainAction(_ sender: Any) {
-        if gameType == .LiuZhouChess{
+        
             if viewType == ChessType.manAnMachine {
-                chessView.isWaiting = false
-                chessView.startAgain()
+                if self.chessType == .LiuZhouChess{
+                    chessView.isWaiting = false
+                    chessView.startAgain()
+                }else if self.chessType == .fiveInRowChess{
+                    fiveChessView.isWaiting = false
+                    fiveChessView.startAgain()
+                }
+               
             }else if viewType == ChessType.bluetooth {
                 self.createBluetoothMessageVo(type: 7)
             }else if viewType == ChessType.online {
                 self.createSendMessageDic(type: "8")
-            }
-        }else{
-            
+            }else if viewType == ChessType.aiGame{/////to do
+                
         }
         
     }
 
     @IBAction func regretChessActoin(_ sender: Any) {
-        if gameType == .LiuZhouChess{
+        if chessType == .LiuZhouChess{
             var whiteCount = 0
             var blackCount = 0
             for i in 0...5 {
@@ -296,15 +383,44 @@ class ChessViewController: BaseViewController {
             }
             
             
-            if viewType == .bluetooth {
-                createBluetoothMessageVo(type: 4)
-            }else {
-                createSendMessageDic(type: "5")
-            }
         }else{
+            var whiteCount = 0
+            var blackCount = 0
+            for i in 0..<15 {
+                for j in 0..<15 {
+                    if fiveChessView.chessArray[i][j] == .whiteChess {
+                        whiteCount += 1
+                    }
+                    if fiveChessView.chessArray[i][j] == .blackChess {
+                        blackCount += 1
+                    }
+                }
+            }
             
+            if whiteCount == 0 {
+                if fiveChessView.role == .whiter {
+                    return
+                }
+                if blackCount == 0 {
+                    return
+                }
+                
+            }
+            
+            if blackCount == 0 {
+                if fiveChessView.role == .blacker {
+                    return
+                }
+            }
         }
-       
+        
+        if viewType == .bluetooth {
+            createBluetoothMessageVo(type: 4)
+        }else if viewType == .online{
+            createSendMessageDic(type: "5")
+        }else if viewType == .aiGame {
+            self.fiveChessView.regretChess(active: false)
+        }
      
     }
     
@@ -336,18 +452,24 @@ class ChessViewController: BaseViewController {
     }
     
     @IBAction func giveUpAction(_ sender: Any) {
-        if gameType == .LiuZhouChess{
+        
             if viewType == ChessType.manAnMachine {
-                chessView.isWaiting = false
+                if chessType == .LiuZhouChess{
+                    chessView.isWaiting = true
+                }else if chessType == .fiveInRowChess {
+                    fiveChessView.isWaiting = true
+                }
+                
                 PAMBManager.sharedInstance.showBriefMessage(message: "对方认输，游戏结束。")
             }else if viewType == ChessType.bluetooth {
                 self.createBluetoothMessageVo(type: 10)
             }else if viewType == ChessType.online {
                 self.createSendMessageDic(type: "11")
-            }
-        }else{
-            
+            }else if viewType == .aiGame {
+                PAMBManager.sharedInstance.showBriefMessage(message: "别灰心，再接再厉。")
+                fiveChessView.isWaiting = true
         }
+        
        
     }
     override func didReceiveMemoryWarning() {

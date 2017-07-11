@@ -371,6 +371,24 @@ class AIFiveInARowChess {
           
         }
     }
+    
+    static func udateAllScore(chessArray:[[FlagType]],AIScore:inout [[Int]],humanScore:inout [[Int]]){
+        func update(x:Int,y:Int) {
+            let black = self.getScoreWithChess(chessArray: chessArray, point: (x,y), role: .blackChess)
+            let white = self.getScoreWithChess(chessArray: chessArray, point: (x,y), role: .whiteChess)
+            AIScore[x][y] = black
+            humanScore[x][y] = white
+        }
+        for i in 0..<15 {
+            for j in 0..<15 {
+                if chessArray[i][j] == .freeChess && self.effectivePoint(chessArray: chessArray, point: (i,j)) {
+                    update(x: i, y: j)
+                }
+            }
+        }
+    }
+    
+    
     //判断棋盘格局
     static func getFiveChessType(chessArray:[[FlagType]],AIScore:inout [[Int]],humanScore:inout [[Int]]) ->[(x:Int,y:Int)]{
         var twos:[(Int,Int)] = []
@@ -703,6 +721,18 @@ class AIFiveInARowChess {
             }
             i += 2
         }
+        if result == nil {
+            var maxAiScore = 0
+            for i in 0..<15{
+                for j in 0..<15 {
+                    if chessArray[i][j] == .freeChess && maxAiScore < AIScore[i][j] {
+                        maxAiScore = AIScore[i][j]
+                        result = (i,j,maxAiScore)
+                    }
+                }
+            }
+        }
+        
         return result
     }
     
@@ -724,5 +754,7 @@ class AIFiveInARowChess {
         }
         return nil
     }
+    
+    
     
 }
