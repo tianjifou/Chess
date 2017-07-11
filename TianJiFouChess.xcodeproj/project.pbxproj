@@ -34,7 +34,6 @@
 		AD685B631ECD49B600EA006D /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */; };
 		AD685B641ECD49B600EA006D /* AddFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */; };
 		AD7BBF281F04B0BF0055A461 /* AIFiveInARowChess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF271F04B0BF0055A461 /* AIFiveInARowChess.swift */; };
-		AD7BBF2A1F0A20920055A461 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF291F0A20920055A461 /* test.swift */; };
 		AD7BBF2C1F0A31E80055A461 /* AIFiveStepTool+Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBF2B1F0A31E80055A461 /* AIFiveStepTool+Score.swift */; };
 		AD9DED501EE536D50048218E /* ChessEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DED4F1EE536D50048218E /* ChessEnum.swift */; };
 		ADA27B201EC97A6000AEA3C1 /* LogonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */; };
@@ -50,7 +49,6 @@
 		ADDE35EE1EB32C9E009964F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADDE35EC1EB32C9E009964F6 /* LaunchScreen.storyboard */; };
 		ADDE35F91EB32C9E009964F6 /* TianJiFouChessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE35F81EB32C9E009964F6 /* TianJiFouChessTests.swift */; };
 		ADDE36041EB32C9E009964F6 /* TianJiFouChessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */; };
-		ADF29B3F1EF7DA680081666E /* TestSomeThing.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +100,6 @@
 		AD685B611ECD49B600EA006D /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
 		AD685B621ECD49B600EA006D /* AddFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendTableViewCell.xib; sourceTree = "<group>"; };
 		AD7BBF271F04B0BF0055A461 /* AIFiveInARowChess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFiveInARowChess.swift; sourceTree = "<group>"; };
-		AD7BBF291F0A20920055A461 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		AD7BBF2B1F0A31E80055A461 /* AIFiveStepTool+Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AIFiveStepTool+Score.swift"; sourceTree = "<group>"; };
 		AD9DED4F1EE536D50048218E /* ChessEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessEnum.swift; sourceTree = "<group>"; };
 		ADA27B1F1EC97A6000AEA3C1 /* LogonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogonViewController.swift; sourceTree = "<group>"; };
@@ -126,8 +123,6 @@
 		ADDE35FF1EB32C9E009964F6 /* TianJiFouChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TianJiFouChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDE36031EB32C9E009964F6 /* TianJiFouChessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianJiFouChessUITests.swift; sourceTree = "<group>"; };
 		ADDE36051EB32C9E009964F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADF29B3D1EF7DA680081666E /* TestSomeThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSomeThing.h; sourceTree = "<group>"; };
-		ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestSomeThing.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,9 +201,6 @@
 				AD685B481ECBE3FE00EA006D /* TJFTool.swift */,
 				AD685B4C1ECBE41A00EA006D /* ChatHelpTool.swift */,
 				AD9DED4F1EE536D50048218E /* ChessEnum.swift */,
-				AD7BBF291F0A20920055A461 /* test.swift */,
-				ADF29B3D1EF7DA680081666E /* TestSomeThing.h */,
-				ADF29B3E1EF7DA680081666E /* TestSomeThing.mm */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -503,12 +495,10 @@
 				AD5FE2321F13108400D4B152 /* WebViewController.swift in Sources */,
 				AD66FE351ED424D400E30706 /* ShunZiChess.pbobjc.m in Sources */,
 				AD5FE2301F13108400D4B152 /* ChessboardView.swift in Sources */,
-				AD7BBF2A1F0A20920055A461 /* test.swift in Sources */,
 				AD5FE2281F0F7AC000D4B152 /* SettingViewController.swift in Sources */,
 				ADA27B2B1EC98DE100AEA3C1 /* PADeviceSize.swift in Sources */,
 				AD685B4F1ECC27D000EA006D /* MainTabBarViewController.swift in Sources */,
 				AD5EA5A31EEA81C000C7349A /* UIViewController+ShowMessage.m in Sources */,
-				ADF29B3F1EF7DA680081666E /* TestSomeThing.mm in Sources */,
 				AD685B5A1ECD3A7A00EA006D /* SearchFriendViewController.swift in Sources */,
 				AD7BBF2C1F0A31E80055A461 /* AIFiveStepTool+Score.swift in Sources */,
 				AD5FE2241F0F64B900D4B152 /* ChessListViewController.swift in Sources */,
