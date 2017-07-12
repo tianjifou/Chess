@@ -46,13 +46,13 @@ class FiveInARowChessboardView: UIView {
     fileprivate var roleStateLast:RoleState = .blackState
     fileprivate var whiteRegretChessModel = RegretChessModel()
     fileprivate var blackRegretChessModel = RegretChessModel()
+    fileprivate var buZouChess:[(Int,Int)] = []
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.backgroundColor = UIColor.clear
         createLine()
-        
-      
     }
+    
     func createLine() {
         for index in 0..<15 {
             let layerCrossWise = CALayer()
@@ -89,7 +89,7 @@ class FiveInARowChessboardView: UIView {
         }
         switch type {
         case ChessType.aiGame:
-            manAnMachineChess(location:location)
+            aiGameChess(location:location)
         case ChessType.manAnMachine:
             manAnMachineChess(location:location)
         case ChessType.bluetooth:
@@ -103,6 +103,15 @@ class FiveInARowChessboardView: UIView {
       
         
     }
+    fileprivate func aiGameChess(location:CGPoint) {
+        let  point = ChessStepTool.touchRealFivePoint(location)
+        let swsPoint = SWSPoint()
+        swsPoint.x = Int(round(Double(point.x-10)/Double(fiveChessWidth)))
+        swsPoint.y = Int(round(Double(point.y-10)/Double(fiveChessWidth)))
+        isUser = true
+        moveChess(swsPoint:swsPoint)
+    }
+    
     fileprivate func manAnMachineChess(location:CGPoint) {
         let  point = ChessStepTool.touchRealFivePoint(location)
         let swsPoint = SWSPoint()
@@ -111,6 +120,7 @@ class FiveInARowChessboardView: UIView {
         moveChess(swsPoint:swsPoint)
        
     }
+    
     
     fileprivate func bluetoothChess(location:CGPoint) {
         let  point = ChessStepTool.touchRealFivePoint(location)
@@ -185,6 +195,7 @@ class FiveInARowChessboardView: UIView {
             flagIageView.flagType = tempFlag
             chessArray[swsPoint.x][swsPoint.y] = tempFlag
             if self.viewType == .aiGame{
+                buZouChess.append((swsPoint.x,swsPoint.y))
                AIFiveInARowChess.updateOneEffectScore(chessArray: chessArray, point: (swsPoint.x,swsPoint.y), AIScore: &AIScore, humanScore: &humanScore)
                 logSomeThing()
                 self.isWaiting = true
@@ -215,6 +226,7 @@ class FiveInARowChessboardView: UIView {
                                 sws.x = point.0
                                 sws.y = point.1
                                 DispatchQueue.main.async {
+                                    weakSelf.isUser = false
                                     weakSelf.moveChess(swsPoint: sws)
                                     weakSelf.isWaiting = false
                                   PAMBManager.sharedInstance.hideAlert(view: weakSelf.superview)
@@ -240,16 +252,16 @@ class FiveInARowChessboardView: UIView {
                 }
             }
         }
-        if count <= 5{
+        if count <= 10{
             return 4
-        }else if count <= 10 {
-            return 5
         }else if count <= 20 {
             return 6
         }else if count <= 40 {
-            return 7
-        }else {
             return 8
+        }else if count <= 80 {
+            return 10
+        }else {
+            return 12
         }
     }
     
@@ -290,6 +302,7 @@ class FiveInARowChessboardView: UIView {
             $0.removeFromSuperlayer()
         }
          chessArray = createChessArray()
+        buZouChess.removeAll()
         self.createLine()
        
         if viewType == .aiGame{
@@ -313,19 +326,31 @@ class FiveInARowChessboardView: UIView {
             $0.removeFromSuperlayer()
         }
         self.createLine()
-        if active {
-            regretExchangeState(type: self.role)
-        }else {
+        if self.viewType == .aiGame {
+            if buZouChess.count > 2 {
+                for _ in 0...1{
+                    if  let x = buZouChess.last?.0,let y = buZouChess.last?.1{
+                        chessArray[x][y] = .freeChess
+                        buZouChess.removeLast()
+                    }
+                }
+               roleState = .whiteState
+               
+            }
             
-            regretExchangeState(type: self.role == .blacker ? .whiter : .blacker)
-        }
-        
-        createChessImage()
-        if active {
-            self.isWaiting = false
+            
         }else {
-            self.isWaiting = true
+            if active {
+                regretExchangeState(type: self.role)
+                self.isWaiting = false
+            }else {
+                
+                regretExchangeState(type: self.role == .blacker ? .whiter : .blacker)
+                 self.isWaiting = true
+            }
+            
         }
+        createChessImage()
         if self.viewType == .aiGame{
            AIFiveInARowChess.udateAllScore(chessArray: chessArray, AIScore: &AIScore, humanScore: &humanScore)
             self.isWaiting = false
@@ -333,6 +358,7 @@ class FiveInARowChessboardView: UIView {
         
         
     }
+    
     fileprivate func createChessImage() {
         
         for i in 0..<15 {
