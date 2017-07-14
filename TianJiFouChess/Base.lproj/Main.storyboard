@@ -307,7 +307,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BhX-nt-0N0" firstAttribute="height" secondItem="YB6-V1-JWI" secondAttribute="height" id="BgH-0j-h4X"/>
                             <constraint firstItem="gz5-Id-opE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="CuG-BB-XMx"/>
@@ -323,7 +323,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="六洲棋" id="htD-1m-WhW">
-                        <barButtonItem key="rightBarButtonItem" title="玩家介绍" id="7dg-4J-Fl1">
+                        <barButtonItem key="rightBarButtonItem" title="玩法说明" id="7dg-4J-Fl1">
                             <connections>
                                 <action selector="logOutAction:" destination="BYZ-38-t0r" id="OjI-yl-N9g"/>
                             </connections>
@@ -444,6 +444,6 @@
         <image name="icon_xy2" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="syr-D0-glD"/>
+        <segue reference="bmy-de-Gk7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -254,14 +254,8 @@ class FiveInARowChessboardView: UIView {
         }
         if count <= 10{
             return 4
-        }else if count <= 20 {
+        } else  {
             return 6
-        }else if count <= 40 {
-            return 8
-        }else if count <= 80 {
-            return 10
-        }else {
-            return 12
         }
     }
     

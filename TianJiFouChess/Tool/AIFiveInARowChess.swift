@@ -71,7 +71,7 @@ class AIFiveInARowChess {
     static var searchDeep = 6//搜索深度
     static var deepDecrease = 8//按搜索深度递减分数，为了让短路径的结果比深路劲的分数高
     static var limitNum = 8//
-    static var checkmateDeep = 5//算杀深度
+    static var checkmateDeep = 7//算杀深度
     
     /// 判断该位置是否是有效分数位置
     ///
@@ -626,7 +626,6 @@ class AIFiveInARowChess {
        var total=0, //总节点数
         steps=0,  //总步数
         count = 0,  //每次思考的节点数
-        PVcut = 0,
         ABcut = 0 //AB剪枝次数
         
         
@@ -636,7 +635,7 @@ class AIFiveInARowChess {
             var best = minScore
             count = 0
             ABcut = 0
-            PVcut = 0
+         
             for i in 0..<points.count {
                 let p = points[i]
                 chessArray[p.x][p.y] = role
@@ -701,10 +700,10 @@ class AIFiveInARowChess {
                     return some
                 }
             }
-            if (deep == 2 || deep == 3) && TJFTool.littleThan(a: Float(best), b: Float(live_Three*2)) && TJFTool.greatThan(a: Float(best), b: -(Float)(live_Three)){
+            if (deep == 2 || deep == 3 || deep == 4) && TJFTool.littleThan(a: Float(best), b: Float(sleep_Four)) && TJFTool.greatThan(a: Float(best), b: -(Float)(sleep_Four)){
                 
-                if let result = self.checkmateDeeping(chessArray: &chessArray, role: role, AIScore: &AIScore, humanScore: &humanScore, deep: deep) {
-                   return result[0].2 * Int(pow(0.8, Double(result.count))) * (role == .blackChess ? 1:-1)
+                if let result = self.checkmateDeeping(chessArray: &chessArray, role: role, AIScore: &AIScore, humanScore: &humanScore, deep: checkmateDeep) {
+                   return Int(Double(result[0].2) * pow(0.8, Double(result.count)) * (role == .blackChess ? 1:-1))
                 }
             }
             return best

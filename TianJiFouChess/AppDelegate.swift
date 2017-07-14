@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = ChatHelpTool.share
         
-       
-        
         if  !EMClient.shared().isAutoLogin {
            
         TJFTool.setRootVCInitialViewController(storyboardName: "Login")
