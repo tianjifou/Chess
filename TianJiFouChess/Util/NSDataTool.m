@@ -56,7 +56,7 @@ struct message_header
     return nil;
 }
 -(NSMutableData*)returnData:(GPBMessage*)req messageId:(int)messageId {
-    NSString *header=[NSString stringWithFormat:@"98765432%08lx%08x%08lx00000001",(unsigned long)req.data.length+16,messageId,(unsigned long)++self.header_count];
+    NSString *header=[NSString stringWithFormat:@"98765432%08lx%08x%08lx00000001",(unsigned long)req.data.length+20,messageId,(unsigned long)++self.header_count];
     Byte bytes[40];
     int j=0;
     for(int i=0;i*2+1<header.length;i++)
@@ -141,18 +141,18 @@ struct message_header
                        | ((testByte[13] & 0xFF)<<16)
                        | ((testByte[14] & 0xFF)<<8)
                        | ((testByte[15] & 0xFF)));
-    if(length+4==data.length){
+    if(length==data.length){
         if (resultBlock) {
-            resultBlock([data subdataWithRange:NSMakeRange(20, length-16)],messageId,headerId);
+            resultBlock([data subdataWithRange:NSMakeRange(20, length-20)],messageId,headerId);
         }
         if (finishBlockMessage) {
             finishBlockMessage();
         }
-    }else if(length+4<data.length){
+    }else if(length<data.length){
         if (resultBlock) {
-            resultBlock([data subdataWithRange:NSMakeRange(20, length-16)],messageId,headerId);
+            resultBlock([data subdataWithRange:NSMakeRange(20, length-20)],messageId,headerId);
         }
-        [self parseSocketReceiveData:[data subdataWithRange:NSMakeRange(length+4, data.length-length-4)] result:resultBlock finish:            finishBlockMessage];
+        [self parseSocketReceiveData:[data subdataWithRange:NSMakeRange(length, data.length-length)] result:resultBlock finish:            finishBlockMessage];
     }else{
         
         [_halfData appendData:data];

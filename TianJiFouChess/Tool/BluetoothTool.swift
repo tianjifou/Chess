@@ -122,9 +122,11 @@ extension BluetoothTool: MCSessionDelegate{
     
 }
 extension BluetoothTool:MCAdvertiserAssistantDelegate{
+    /// 发出广播请求
     func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant) {
         print("advertiserAssistantWillPresentInvitation")
     }
+    /// 结束广播请求
     func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant) {
         print("advertiserAssistantDidDismissInvitation")
     }

@@ -21,7 +21,19 @@ class FiveInRowChessViewController: BaseViewController {
         let bluetooth = BluetoothTool.blueTooth
         bluetooth.setupBrowserVC()
         bluetooth.browserBlock = { [weak self] in
-            self?.performSegue(withIdentifier: "pushFiveChess", sender: "bluetoothFighting")
+            guard let _ = self else {
+                return
+            }
+            let messageVo = ChallengeMessage()
+            messageVo.from = UIDevice.current.name
+            messageVo.to = (BluetoothTool.blueTooth.myPeer?.displayName).noneNull
+            messageVo.chessType = 1
+            
+            BluetoothTool.blueTooth.sendData(messageVo, successBlock: nil) { (error) in
+                PAMBManager.sharedInstance.showBriefMessage(message: "\(error)")
+            }
+            
+            
         }
         self.present(bluetooth.browser!, animated: true, completion: nil)
     }
@@ -35,7 +47,20 @@ class FiveInRowChessViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        BluetoothTool.blueTooth.getMessageBlock = {[weak self](message) in
+            guard let weakSelf = self else {
+                return
+            }
+            guard let model = message as? ChallengeMessage  else {
+                return
+            }
+            if model.chessType == 1{
+                weakSelf.performSegue(withIdentifier: "pushFiveChess", sender: "bluetoothFighting")
+            }else if model.chessType == 2 {
+                PAMBManager.sharedInstance.showBriefMessage(message: "你与对方游戏类型不匹配")
+            }
+            
+        }
         // Do any additional setup after loading the view.
     }
 

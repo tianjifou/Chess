@@ -1,6 +1,4 @@
 syntax = "proto3";
-
-
 enum tianJiFouMessageId
 {
 kChallenge         = 0;

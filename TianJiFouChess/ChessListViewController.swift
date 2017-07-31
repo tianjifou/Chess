@@ -18,8 +18,8 @@ class ChessListViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String.init(describing: UITableViewCell.self))
         tableView.rowHeight = 44
-        
         title = "游戏列表"
+        
     }
 
     override func didReceiveMemoryWarning() {
