@@ -42,8 +42,6 @@ enum FiveChessType:Int {
         }
     }
     
-
-    
 }
 let live_Five = 1000000
 let live_Four = 100000

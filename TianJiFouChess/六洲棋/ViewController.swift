@@ -11,11 +11,16 @@ import Hyphenate
 
 
 class ViewController: BaseViewController {
-    
-  
+    var condition1 = false
+    var condition2 = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         BluetoothTool.blueTooth.getMessageBlock = {[weak self](message) in
             guard let weakSelf = self else {
                 return
@@ -24,11 +29,20 @@ class ViewController: BaseViewController {
                 return
             }
             if model.chessType == 2{
-                weakSelf.performSegue(withIdentifier: "pushChessViewController", sender: "bluetoothFighting")
+                weakSelf.condition2 = true
+                weakSelf.pishFiveChessVC()
             }else if model.chessType == 1 {
                 PAMBManager.sharedInstance.showBriefMessage(message: "你与对方游戏类型不匹配")
             }
+           
             
+        }
+    }
+    private func pishFiveChessVC(){
+        if condition1 && condition2 {
+            self.performSegue(withIdentifier: "pushChessViewController", sender: "bluetoothFighting")
+            condition1 = false
+            condition2 = false
         }
         
     }
@@ -46,9 +60,10 @@ class ViewController: BaseViewController {
     @IBAction func bluetoothFighting(_ sender: Any) {
         
         let bluetooth = BluetoothTool.blueTooth
-        bluetooth.setupBrowserVC()
+         bluetooth.start()
+        guard  let browser =  bluetooth.setupBrowserVC() else {return}
         bluetooth.browserBlock = { [weak self] in
-            guard let _ = self else {
+            guard let weakSelf = self else {
                 return
             }
             let messageVo = ChallengeMessage()
@@ -59,9 +74,10 @@ class ViewController: BaseViewController {
             BluetoothTool.blueTooth.sendData(messageVo, successBlock: nil) { (error) in
                 PAMBManager.sharedInstance.showBriefMessage(message: "\(error)")
             }
-            
+            weakSelf.condition1 = true
+            weakSelf.pishFiveChessVC()
         }
-        self.present(bluetooth.browser!, animated: true, completion: nil)
+        self.present(browser, animated: true, completion: nil)
     }
     
     @IBAction func onlineFighting(_ sender: Any) {

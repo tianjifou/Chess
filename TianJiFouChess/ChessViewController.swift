@@ -16,6 +16,7 @@ class ChessViewController: BaseViewController {
     var chessType:GameType = .fiveInRowChess
     private var chessView: ChessboardView!
     private var fiveChessView:FiveInARowChessboardView!
+    private var enemyOut = false
     @IBOutlet weak var againBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -229,7 +230,8 @@ class ChessViewController: BaseViewController {
                 }
                 
             case 3:
-                weakSelf.alertView(message: "对方已退出游戏")
+                 weakSelf.alertView(message: "对方已退出游戏")
+                 weakSelf.enemyOut = true
             case 4:
                 let alertView = UIAlertController.init(title: "悔棋", message: "您同意对方悔棋吗？", preferredStyle: .alert)
                 let alertAction = UIAlertAction.init(title: "拒绝", style: .cancel, handler: {(actin) in
@@ -317,7 +319,10 @@ class ChessViewController: BaseViewController {
         alertView.addAction(alertAction)
         let okAction = UIAlertAction.init(title: "退出", style: .default) { (action) in
             if self.viewType == .bluetooth {
-                self.createBluetoothMessageVo(type: 3)
+                if !self.enemyOut{
+                   self.createBluetoothMessageVo(type: 3)
+                }
+                
 
             }else if self.viewType == .online {
                 self.createSendMessageDic(type: "4")
@@ -431,6 +436,10 @@ class ChessViewController: BaseViewController {
         messageVo.typeRole = type
         BluetoothTool.blueTooth.sendData(messageVo, successBlock: {
             success?()
+            if type == 3 {
+               BluetoothTool.blueTooth.stop()
+            }
+           
         }) { (error) in
             PAMBManager.sharedInstance.showBriefMessage(message: "\(error)")
         }

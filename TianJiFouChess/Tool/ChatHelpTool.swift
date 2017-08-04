@@ -258,8 +258,6 @@ extension ChatHelpTool: EMContactManagerDelegate {
         }else{
            vc!.present(alertView, animated: true, completion: nil)
         }
-        
-        
     }
 }
 

@@ -12,7 +12,6 @@ import Protobuf
 let serviceStr = "tianjifou"
 class BluetoothTool: NSObject{
     static let  blueTooth = BluetoothTool()
-    var browser: MCBrowserViewController?
     var session:MCSession?
     var myPeer:MCPeerID?
     var advertiser:MCAdvertiserAssistant?
@@ -21,12 +20,20 @@ class BluetoothTool: NSObject{
     
     private override init() {
         super.init()
+       
+    }
+    
+    func start() {
+       stop()
+       setupPeerSessionAdvertiser()
+    }
+    
+    func stop() {
         myPeer = nil
         session = nil
         advertiser = nil
-        browser = nil
-        setupPeerSessionAdvertiser()
     }
+    
     
     private func setupPeerSessionAdvertiser() {
         myPeer = MCPeerID.init(displayName: UIDevice.current.name)
@@ -39,12 +46,13 @@ class BluetoothTool: NSObject{
         advertiser?.delegate = self
     }
     
-    func setupBrowserVC() {
+    func setupBrowserVC() -> MCBrowserViewController?{
         guard let session = session else {
-            return
+            return nil
         }
-        browser = MCBrowserViewController.init(serviceType: serviceStr, session: session)
-        browser?.delegate = self
+       let browser = MCBrowserViewController.init(serviceType: serviceStr, session: session)
+        browser.delegate = self
+        return browser
     }
     
     func sendData(_ messageVo: GPBMessage, successBlock:(()->())?,errorBlock:((NSError)->())?) {
@@ -69,7 +77,7 @@ extension BluetoothTool: MCBrowserViewControllerDelegate {
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         print("蓝牙连接完成")
-        browser?.dismiss(animated: true, completion: { [weak self] in
+       browserViewController.dismiss(animated: true, completion: { [weak self] in
              self?.browserBlock?()
             
         })
@@ -78,7 +86,7 @@ extension BluetoothTool: MCBrowserViewControllerDelegate {
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         print("取消蓝牙连接")
-        browser?.dismiss(animated: true, completion: nil)
+        browserViewController.dismiss(animated: true, completion: nil)
     }
     
 }
