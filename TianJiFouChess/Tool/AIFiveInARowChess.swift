@@ -701,7 +701,7 @@ class AIFiveInARowChess {
             if (deep == 2 || deep == 3 || deep == 4) && TJFTool.littleThan(a: Float(best), b: Float(sleep_Four)) && TJFTool.greatThan(a: Float(best), b: -(Float)(sleep_Four)){
                 
                 if let result = self.checkmateDeeping(chessArray: &chessArray, role: role, AIScore: &AIScore, humanScore: &humanScore, deep: checkmateDeep) {
-                   return Int(Double(result[0].2) * pow(0.8, Double(result.count)) * (role == .blackChess ? 1:-1))
+                   return Int(Double(result[0].2) * pow(0.8, Double(result.count)) / Double(role == .blackChess ? 1:-1))
                 }
             }
             return best
